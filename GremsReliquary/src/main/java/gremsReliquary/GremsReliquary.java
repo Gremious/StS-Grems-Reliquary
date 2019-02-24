@@ -14,19 +14,18 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import gremsReliquary.events.IdentityCrisisEvent;
 import gremsReliquary.potions.PlaceholderPotion;
 import gremsReliquary.relics.BottledPlaceholderRelic;
 import gremsReliquary.relics.DefaultClickableRelic;
+import gremsReliquary.relics.NeowsTentacle;
 import gremsReliquary.relics.PlaceholderRelic2;
 import gremsReliquary.util.TextureLoader;
 import gremsReliquary.variables.DefaultSecondMagicNumber;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 
@@ -37,8 +36,6 @@ public class GremsReliquary implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         PostInitializeSubscriber {
-    // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
-    // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
     private static String modID;
 
@@ -162,15 +159,6 @@ public class GremsReliquary implements
         }));
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
-        // =============== EVENTS =================
-
-        // This event will be exclusive to the City (act 2). If you want an event that's present at any
-        // part of the game, simply don't include the dungeon ID
-        // If you want to have a character-specific event, look at slimebound (CityRemoveEventPatch).
-        // Essentially, you need to patch the game and say "if a player is not playing my character class, remove the event from the pool"
-        BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
-
-        // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
 
     }
@@ -205,10 +193,11 @@ public class GremsReliquary implements
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), AbstractCard.CardColor.GREEN);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
+        BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
 
-        // Mark relics as seen (the others are all starters so they're marked as seen in the character file
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+
+        UnlockTracker.markRelicAsSeen(NeowsTentacle.ID);
+
         logger.info("Done adding relics!");
     }
 
@@ -287,7 +276,7 @@ public class GremsReliquary implements
         }
     }
 
-    // ================ /LOAD THE KEYWORDS/ ===================    
+    // ================ /LOAD THE KEYWORDS/ ===================
 
     // this adds "ModName:" before the ID of any card/relic/power etc.
     // in order to avoid conflicts if any other mod uses the same ID.

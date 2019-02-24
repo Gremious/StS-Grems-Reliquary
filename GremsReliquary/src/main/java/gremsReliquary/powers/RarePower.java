@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import gremsReliquary.GremsReliquary;
-import gremsReliquary.cards.DefaultRareAttack;
 import gremsReliquary.util.TextureLoader;
 
 public class RarePower extends AbstractPower {

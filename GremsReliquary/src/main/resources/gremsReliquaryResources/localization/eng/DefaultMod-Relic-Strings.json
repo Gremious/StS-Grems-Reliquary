@@ -1,9 +1,9 @@
 {
-  "theDefault:PlaceholderRelic": {
-    "NAME": "Placeholder Energy Relic",
-    "FLAVOR": "The snake is a friend.",
+  "theDefault:NeowsTentacle": {
+    "NAME": "Neows' Tentacle",
+    "FLAVOR": "Where did this...come from?...",
     "DESCRIPTIONS": [
-      "Gain #b1 [E] ."
+      "Upon pickup, gain a random #bNeow #bBlessing."
     ]
   },
   "theDefault:PlaceholderRelic2": {
