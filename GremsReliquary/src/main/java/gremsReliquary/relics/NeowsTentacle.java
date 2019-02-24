@@ -18,42 +18,34 @@ public class NeowsTentacle extends CustomRelic {
     private int roll;
 
     public static final String ID = GremsReliquary.makeID("NeowsTentacle");
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("NeowsTentacle.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("NeowsTentacle.png"));
 
     public NeowsTentacle() {
         super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.MAGICAL);
-
     }
 
-
-    // Gain 1 energy on equip.
     @Override
     public void onEquip() {
-
         roll = AbstractDungeon.relicRng.random(3);
-
         if (rewards.size() == 0) {
             rewards.add(new NeowReward(0));
             rewards.add(new NeowReward(1));
             rewards.add(new NeowReward(2));
             rewards.add(new NeowReward(3));
         }
-
         flash();
         rewards.get(roll).activate();
-
         setDescriptionAfterLoading();
     }
 
-    public void setDescriptionAfterLoading() {
+    private void setDescriptionAfterLoading() {
         description = DESCRIPTIONS[1] + rewards.get(roll).optionLabel;
         tips.clear();
         tips.add(new PowerTip(this.name, this.description));
         initializeTips();
     }
 
-    // Description
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];
