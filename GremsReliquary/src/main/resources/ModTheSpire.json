@@ -1,8 +1,8 @@
 {
-  "modid": "defaultmod",
-  "name": "Default Mod",
+  "modid": "gremsreliquary",
+  "name": "Grem's Reliquary",
   "author_list": ["Gremious"],
-  "description": "A base for Slay the Spire to start your own mod from.",
+  "description": "A mod that adds any nice relic ideas I have.",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",

@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
@@ -19,12 +21,10 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDefault.cards.*;
-import theDefault.characters.TheDefault;
 import theDefault.events.IdentityCrisisEvent;
 import theDefault.potions.PlaceholderPotion;
 import theDefault.relics.BottledPlaceholderRelic;
 import theDefault.relics.DefaultClickableRelic;
-import theDefault.relics.PlaceholderRelic;
 import theDefault.relics.PlaceholderRelic2;
 import theDefault.util.TextureLoader;
 import theDefault.variables.DefaultCustomVariable;
@@ -57,7 +57,6 @@ public class DefaultMod implements
         EditRelicsSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
-        EditCharactersSubscriber,
         PostInitializeSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
@@ -81,31 +80,31 @@ public class DefaultMod implements
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
 
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "theDefaultResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "theDefaultResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "theDefaultResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = "gremsReliquaryResources/images/512/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY = "gremsReliquaryResources/images/512/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY = "gremsReliquaryResources/images/512/bg_power_default_gray.png";
 
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "theDefaultResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "theDefaultResources/images/512/card_small_orb.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "gremsReliquaryResources/images/512/card_default_gray_orb.png";
+    private static final String CARD_ENERGY_ORB = "gremsReliquaryResources/images/512/card_small_orb.png";
 
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "gremsReliquaryResources/images/1024/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "gremsReliquaryResources/images/1024/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "gremsReliquaryResources/images/1024/bg_power_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "gremsReliquaryResources/images/1024/card_default_gray_orb.png";
 
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = "theDefaultResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "theDefaultResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_DEFAULT_SHOULDER_1 = "theDefaultResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "theDefaultResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "theDefaultResources/images/char/defaultCharacter/corpse.png";
+    private static final String THE_DEFAULT_BUTTON = "gremsReliquaryResources/images/charSelect/DefaultCharacterButton.png";
+    private static final String THE_DEFAULT_PORTRAIT = "gremsReliquaryResources/images/charSelect/DefaultCharacterPortraitBG.png";
+    public static final String THE_DEFAULT_SHOULDER_1 = "gremsReliquaryResources/images/char/defaultCharacter/shoulder.png";
+    public static final String THE_DEFAULT_SHOULDER_2 = "gremsReliquaryResources/images/char/defaultCharacter/shoulder2.png";
+    public static final String THE_DEFAULT_CORPSE = "gremsReliquaryResources/images/char/defaultCharacter/corpse.png";
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
-    public static final String BADGE_IMAGE = "theDefaultResources/images/Badge.png";
+    public static final String BADGE_IMAGE = "gremsReliquaryResources/images/Badge.png";
 
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "theDefaultResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "theDefaultResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_DEFAULT_SKELETON_ATLAS = "gremsReliquaryResources/images/char/defaultCharacter/skeleton.atlas";
+    public static final String THE_DEFAULT_SKELETON_JSON = "gremsReliquaryResources/images/char/defaultCharacter/skeleton.json";
 
     // =============== MAKE IMAGE PATHS =================
 
@@ -144,24 +143,10 @@ public class DefaultMod implements
         logger.info("Subscribe to BaseMod hooks");
 
         BaseMod.subscribe(this);
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        setModID("theDefault");
+        setModID("gremsReliquary");
 
         logger.info("Done subscribing");
 
-        logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
-
-        BaseMod.addColor(TheDefault.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
-                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
 
         logger.info("Done creating the color");
     }
@@ -192,7 +177,7 @@ public class DefaultMod implements
                 throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID()); // THIS IS A NO-NO
             } // WHY WOULD U EDIT THIS
             if (!resourcePathExists.exists()) { // DON'T CHANGE THIS
-                throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources"); // NOT THIS
+                throw new RuntimeException("Rename your gremsReliquaryResources folder to match your mod ID! " + getModID() + "Resources"); // NOT THIS
             }// NO
         }// NO
     }// NO
@@ -207,22 +192,6 @@ public class DefaultMod implements
     }
 
     // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
-
-
-    // =============== LOAD THE CHARACTER =================
-
-    @Override
-    public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + TheDefault.Enums.THE_DEFAULT.toString());
-
-        BaseMod.addCharacter(new TheDefault("the Default", TheDefault.Enums.THE_DEFAULT),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DEFAULT);
-
-        receiveEditPotions();
-        logger.info("Added " + TheDefault.Enums.THE_DEFAULT.toString());
-    }
-
-    // =============== /LOAD THE CHARACTER/ =================
 
 
     // =============== POST-INITIALIZE =================
@@ -266,7 +235,7 @@ public class DefaultMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheDefault.Enums.THE_DEFAULT);
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, AbstractPlayer.PlayerClass.THE_SILENT);
 
         logger.info("Done editing potions");
     }
@@ -281,9 +250,7 @@ public class DefaultMod implements
         logger.info("Adding relics");
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), AbstractCard.CardColor.GREEN);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
