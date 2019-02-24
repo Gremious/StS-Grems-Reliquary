@@ -1,5 +1,5 @@
 {
-  "theDefault:DefaultOrb": {
+  "gremsReliquary:DefaultOrb": {
     "NAME": "Default Orb",
     "DESCRIPTION": [
       "#yPassive: At the start of your turn, draw #b",

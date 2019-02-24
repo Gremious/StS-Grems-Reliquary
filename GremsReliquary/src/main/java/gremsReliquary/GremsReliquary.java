@@ -41,7 +41,7 @@ public class GremsReliquary implements
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Grem's Reliquary";
-    private static final String AUTHOR = "Gremious"; // And pretty soon - You!
+    private static final String AUTHOR = "Gremious";
     private static final String DESCRIPTION = "A mod that adds any nice relic ideas I have.";
 
     // =============== INPUT TEXTURE LOCATION =================
@@ -105,10 +105,10 @@ public class GremsReliquary implements
     // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
 
     public static void setModID(String ID) { // DON'T EDIT
-        if (ID.equals("gremsReliquary")) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
-            throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"gremsReliquary\""); // THIS ALSO DON'T EDIT
+        if (ID.equals("theDefault")) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
+            throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\""); // THIS ALSO DON'T EDIT
         } else if (ID.equals("theDefaultDev")) { // NO
-            modID = "gremsReliquary"; // DON'T
+            modID = "theDefault"; // DON'T
         } else { // NO EDIT AREA
             modID = ID; // DON'T WRITE OR CHANGE THINGS HERE NOT EVEN A LITTLE
         } // NO
@@ -189,12 +189,8 @@ public class GremsReliquary implements
     public void receiveEditRelics() {
         logger.info("Adding relics");
 
-        // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), AbstractCard.CardColor.GREEN);
-
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
-
 
         UnlockTracker.markRelicAsSeen(NeowsTentacle.ID);
 
@@ -239,10 +235,6 @@ public class GremsReliquary implements
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
                 getModID() + "Resources/localization/eng/GremsReliquary-Potion-Strings.json");
-
-        // CharacterStrings
-        BaseMod.loadCustomStringsFile(CharacterStrings.class,
-                getModID() + "Resources/localization/eng/GremsReliquary-Character-Strings.json");
 
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,

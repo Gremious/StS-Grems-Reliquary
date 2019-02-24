@@ -3,6 +3,7 @@ package gremsReliquary.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.neow.NeowReward;
 import gremsReliquary.GremsReliquary;
 import gremsReliquary.util.TextureLoader;
@@ -13,34 +14,44 @@ import static gremsReliquary.GremsReliquary.makeRelicOutlinePath;
 import static gremsReliquary.GremsReliquary.makeRelicPath;
 
 public class NeowsTentacle extends CustomRelic {
-
     private ArrayList<NeowReward> rewards = new ArrayList<>();
-    private static int roll = AbstractDungeon.relicRng.random(4);
+    private int roll;
 
-    // ID, images, text.
     public static final String ID = GremsReliquary.makeID("NeowsTentacle");
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     public NeowsTentacle() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.MAGICAL);
+
     }
 
 
     // Gain 1 energy on equip.
     @Override
     public void onEquip() {
-        flash();
-        this.rewards.add(new NeowReward(0));
-        this.rewards.add(new NeowReward(1));
-        this.rewards.add(new NeowReward(2));
-        this.rewards.add(new NeowReward(3));
 
+        roll = AbstractDungeon.relicRng.random(3);
+
+        if (rewards.size() == 0) {
+            rewards.add(new NeowReward(0));
+            rewards.add(new NeowReward(1));
+            rewards.add(new NeowReward(2));
+            rewards.add(new NeowReward(3));
+        }
+
+        flash();
         rewards.get(roll).activate();
 
-
+        setDescriptionAfterLoading();
     }
 
+    public void setDescriptionAfterLoading() {
+        description = DESCRIPTIONS[1] + rewards.get(roll).optionLabel;
+        tips.clear();
+        tips.add(new PowerTip(this.name, this.description));
+        initializeTips();
+    }
 
     // Description
     @Override

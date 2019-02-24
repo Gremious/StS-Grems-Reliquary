@@ -18,12 +18,7 @@ import static gremsReliquary.GremsReliquary.makeRelicOutlinePath;
 import static gremsReliquary.GremsReliquary.makeRelicPath;
 
 public class DefaultClickableRelic extends CustomRelic implements ClickableRelic { // You must implement things you want to use from StSlib
-    /*
-     * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
-     * StSLib for Clickable Relics
-     *
-     * At the start of each combat, gain 1 strenght (i.e. Varja)
-     */
+
 
     // ID, images, text.
     public static final String ID = GremsReliquary.makeID("DefaultClickableRelic");
