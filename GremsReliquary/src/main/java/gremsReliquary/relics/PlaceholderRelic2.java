@@ -22,8 +22,8 @@ public class PlaceholderRelic2 extends CustomRelic {
     // ID, images, text.
     public static final String ID = GremsReliquary.makeID("PlaceholderRelic2");
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("PlaceholderRelic2.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("PlaceholderRelic2.png"));
 
     public PlaceholderRelic2() {
         super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.FLAT);

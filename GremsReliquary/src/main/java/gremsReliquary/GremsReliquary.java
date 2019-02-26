@@ -12,14 +12,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import gremsReliquary.actions.NeowTentacleAction;
 import gremsReliquary.potions.PlaceholderPotion;
-import gremsReliquary.relics.BottledPlaceholderRelic;
-import gremsReliquary.relics.DefaultClickableRelic;
 import gremsReliquary.relics.NeowsTentacle;
 import gremsReliquary.relics.PlaceholderRelic2;
 import gremsReliquary.util.TextureLoader;
@@ -35,7 +35,8 @@ public class GremsReliquary implements
         EditRelicsSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        RelicGetSubscriber {
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
     private static String modID;
 
@@ -191,8 +192,10 @@ public class GremsReliquary implements
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
+        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
         UnlockTracker.markRelicAsSeen(NeowsTentacle.ID);
+        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
 
         logger.info("Done adding relics!");
     }
@@ -276,4 +279,12 @@ public class GremsReliquary implements
         return getModID() + ":" + idText;
     }
 
+    @Override
+    public void receiveRelicGet(AbstractRelic obtainedRelic) {
+        System.out.println("HEY A RELIC WAS OBTAINED!: " + obtainedRelic.relicId);
+        if (obtainedRelic.relicId.equals(NeowsTentacle.ID)) {
+            AbstractDungeon.actionManager.addToBottom(new NeowTentacleAction());
+
+        }
+    }
 }
