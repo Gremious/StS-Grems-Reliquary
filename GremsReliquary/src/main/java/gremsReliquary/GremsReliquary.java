@@ -10,6 +10,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -35,8 +36,16 @@ public class GremsReliquary implements
         PostInitializeSubscriber,
         RelicGetSubscriber {
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
-    private static String modID;
 
+    public static final boolean hasHalation;
+    static {
+        hasHalation = Loader.isModLoaded("Halation");
+        if (hasHalation) {
+            logger.info("Detected Halation");
+        }
+    }
+
+    private static String modID;
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Grem's Reliquary";
     private static final String AUTHOR = "Gremious";
@@ -261,7 +270,8 @@ public class GremsReliquary implements
     public void receiveRelicGet(AbstractRelic obtainedRelic) {
         System.out.println("HEY A RELIC WAS OBTAINED!: " + obtainedRelic.relicId);
         if (obtainedRelic.relicId.equals(NeowsTentacle.ID)) {
-            AbstractDungeon.effectList.add(new NeowTentacleEffect());
+            AbstractDungeon.effectList.add(new NeowTentacleEffect(obtainedRelic));
+            // obtainedRelic.onTrigger();
 
         }
     }

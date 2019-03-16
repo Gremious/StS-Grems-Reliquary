@@ -49,6 +49,14 @@
             <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
+
+        <dependency>
+            <groupId>Halation</groupId>
+            <artifactId>Halation</artifactId>
+            <version>0.0.18</version>
+            <scope>system</scope>
+            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1609810237/Halation.jar</systemPath>
+        </dependency>
     </dependencies>
 
 

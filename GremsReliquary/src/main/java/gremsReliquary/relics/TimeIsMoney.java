@@ -14,12 +14,12 @@ public class TimeIsMoney extends CustomRelic {
     public static final String ID = GremsReliquary.makeID(TimeIsMoney.class.getSimpleName());
     public static final String IMG = GremsReliquary.getModID() + "Resources/images/relics/placeholder_relic.png";
     public static final String OUTLINE = GremsReliquary.getModID() + "Resources/images/relics/outline/placeholder_relic.png";
-    public static int amount = 1;
+    public static int amount = 2;
 
     private boolean usedThisTurn = false;
 
     public TimeIsMoney() {
-        super(ID, ImageMaster.loadImage(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.CLINK);
+        super(ID, ImageMaster.loadImage(IMG), new Texture(OUTLINE), RelicTier.UNCOMMON, LandingSound.CLINK);
     }
 
 
