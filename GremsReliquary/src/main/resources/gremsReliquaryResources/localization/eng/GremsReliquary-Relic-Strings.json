@@ -3,8 +3,16 @@
     "NAME": "Neows' Tentacle",
     "FLAVOR": "Where did this...come from?...",
     "DESCRIPTIONS": [
-      "Upon pickup, btain a random #bNeow #bBlessing.",
+      "Upon pickup, obtain a random #bNeow #bBlessing.",
       "You have obtained: "
+    ]
+  },
+  "gremsReliquary:TimeIsMoney": {
+    "NAME": "TimeIsMoney",
+    "FLAVOR": "Ca-Ching!",
+    "DESCRIPTIONS": [
+      "At the start of each turn, gain #b",
+      " #ggold."
     ]
   },
   "gremsReliquary:PlaceholderRelic2": {

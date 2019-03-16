@@ -12,18 +12,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import gremsReliquary.actions.NeowTentacleAction;
-import gremsReliquary.potions.PlaceholderPotion;
+import gremsReliquary.effects.NeowTentacleEffect;
 import gremsReliquary.relics.NeowsTentacle;
-import gremsReliquary.relics.PlaceholderRelic2;
+import gremsReliquary.relics.TimeIsMoney;
 import gremsReliquary.util.TextureLoader;
-import gremsReliquary.variables.DefaultSecondMagicNumber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -167,23 +164,6 @@ public class GremsReliquary implements
     // =============== / POST-INITIALIZE/ =================
 
 
-    // ================ ADD POTIONS ===================
-
-
-    public void receiveEditPotions() {
-        logger.info("Beginning to edit potions");
-
-        // Class Specific Potion. If you want your potion to not be class-specific,
-        // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
-        // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, AbstractPlayer.PlayerClass.THE_SILENT);
-
-        logger.info("Done editing potions");
-    }
-
-    // ================ /ADD POTIONS/ ===================
-
-
     // ================ ADD RELICS ===================
 
     @Override
@@ -192,11 +172,10 @@ public class GremsReliquary implements
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
+        BaseMod.addRelic(new TimeIsMoney(), RelicType.SHARED);
 
         UnlockTracker.markRelicAsSeen(NeowsTentacle.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
-
+        UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
         logger.info("Done adding relics!");
     }
 
@@ -209,7 +188,6 @@ public class GremsReliquary implements
     public void receiveEditCards() {
         logger.info("Adding variables");
         pathCheck(); //Ignore this
-        BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
     }
     // ================ /ADD CARDS/ ===================
 
@@ -283,7 +261,7 @@ public class GremsReliquary implements
     public void receiveRelicGet(AbstractRelic obtainedRelic) {
         System.out.println("HEY A RELIC WAS OBTAINED!: " + obtainedRelic.relicId);
         if (obtainedRelic.relicId.equals(NeowsTentacle.ID)) {
-            AbstractDungeon.actionManager.addToBottom(new NeowTentacleAction());
+            AbstractDungeon.effectList.add(new NeowTentacleEffect());
 
         }
     }

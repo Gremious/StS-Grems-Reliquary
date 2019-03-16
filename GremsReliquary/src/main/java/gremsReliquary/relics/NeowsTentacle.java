@@ -18,7 +18,7 @@ import static gremsReliquary.GremsReliquary.makeRelicPath;
 public class NeowsTentacle extends CustomRelic implements ClickableRelic {
     private static NeowReward reward;
 
-    public static final String ID = GremsReliquary.makeID("NeowsTentacle");
+    public static final String ID = GremsReliquary.makeID(NeowsTentacle.class.getSimpleName());
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("NeowsTentacle.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("NeowsTentacle.png"));
 
