@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import gremsReliquary.relics.TimeIsMoney;
+import gremsReliquary.relics.*;
 import gremsReliquary.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -103,38 +103,6 @@ public class GremsReliquary implements
         logger.info("Done creating the color");
     }
     
-    // ====== NO EDIT AREA ======
-    // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARDIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
-    // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
-    
-    public static void setModID(String ID) { // DON'T EDIT
-        if (ID.equals("theDefault")) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
-            throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\""); // THIS ALSO DON'T EDIT
-        } else if (ID.equals("theDefaultDev")) { // NO
-            modID = "theDefault"; // DON'T
-        } else { // NO EDIT AREA
-            modID = ID; // DON'T WRITE OR CHANGE THINGS HERE NOT EVEN A LITTLE
-        } // NO
-    } // NO
-    
-    public static String getModID() { // NO
-        return modID; // DOUBLE NO
-    } // NU-UH
-    
-    private static void pathCheck() { // ALSO NO
-        String packageName = GremsReliquary.class.getPackage().getName(); // STILL NOT EDIT ZONE
-        FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS
-        if (!modID.equals("theDefaultDev")) { // LEAVE THIS EDIT-LESS
-            if (!packageName.equals(getModID())) { // NOT HERE ETHER
-                throw new RuntimeException("Rename your gremsReliquary folder to match your mod ID! " + getModID()); // THIS IS A NO-NO
-            } // WHY WOULD U EDIT THIS
-            if (!resourcePathExists.exists()) { // DON'T CHANGE THIS
-                throw new RuntimeException("Rename your gremsReliquaryResources folder to match your mod ID! " + getModID() + "Resources"); // NOT THIS
-            }// NO
-        }// NO
-    }// NO
-    // ====== YOU CAN EDIT AGAIN ======
-    
     @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Grem's Reliquary =========================");
@@ -176,7 +144,10 @@ public class GremsReliquary implements
         // UnlockTracker.markRelicAsSeen(NeowsTentacle.ID);
         
         BaseMod.addRelic(new TimeIsMoney(), RelicType.SHARED);
+        BaseMod.addRelic(new BrokenMirror(), RelicType.SHARED);
+        
         UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
+        UnlockTracker.markRelicAsSeen(BrokenMirror.ID);
         
         
         logger.info("Done adding relics!");
@@ -207,12 +178,6 @@ public class GremsReliquary implements
         
         // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-Relic-Strings.json");
-        
-        // Event Strings
-        BaseMod.loadCustomStringsFile(EventStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-Event-Strings.json");
-        
-        // PotionStrings
-        BaseMod.loadCustomStringsFile(PotionStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-Potion-Strings.json");
         
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-Orb-Strings.json");
@@ -247,12 +212,6 @@ public class GremsReliquary implements
     
     // ================ /LOAD THE KEYWORDS/ ===================
     
-    // this adds "ModName:" before the ID of any card/relic/power etc.
-    // in order to avoid conflicts if any other mod uses the same ID.
-    public static String makeID(String idText) {
-        return getModID() + ":" + idText;
-    }
-
   /*  @Override
     public void receiveRelicGet(AbstractRelic obtainedRelic) {
         System.out.println("HEY A RELIC WAS OBTAINED!: " + obtainedRelic.relicId);
@@ -262,4 +221,40 @@ public class GremsReliquary implements
 
         }
 }*/
+    
+    // ====== NO EDIT AREA ======
+    // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARDIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
+    // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
+    
+    public static void setModID(String ID) { // DON'T EDIT
+        if (ID.equals("theDefault")) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
+            throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\""); // THIS ALSO DON'T EDIT
+        } else if (ID.equals("theDefaultDev")) { // NO
+            modID = "theDefault"; // DON'T
+        } else { // NO EDIT AREA
+            modID = ID; // DON'T WRITE OR CHANGE THINGS HERE NOT EVEN A LITTLE
+        } // NO
+    } // NO
+    
+    public static String getModID() { // NO
+        return modID; // DOUBLE NO
+    } // NU-UH
+    
+    private static void pathCheck() { // ALSO NO
+        String packageName = GremsReliquary.class.getPackage().getName(); // STILL NOT EDIT ZONE
+        FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS
+        if (!modID.equals("theDefaultDev")) { // LEAVE THIS EDIT-LESS
+            if (!packageName.equals(getModID())) { // NOT HERE ETHER
+                throw new RuntimeException("Rename your gremsReliquary folder to match your mod ID! " + getModID()); // THIS IS A NO-NO
+            } // WHY WOULD U EDIT THIS
+            if (!resourcePathExists.exists()) { // DON'T CHANGE THIS
+                throw new RuntimeException("Rename your gremsReliquaryResources folder to match your mod ID! " + getModID() + "Resources"); // NOT THIS
+            }// NO
+        }// NO
+    }// NO
+    // ====== YOU CAN EDIT AGAIN ======
+    
+    public static String makeID(String idText) {
+        return getModID() + ":" + idText;
+    }
 }
