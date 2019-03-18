@@ -15,6 +15,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -27,6 +28,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 
+import static gremsReliquary.effects.NeowTentacleEffect.neowEffectOn;
+
 @SpireInitializer
 public class GremsReliquary implements
         EditCardsSubscriber,
@@ -38,6 +41,7 @@ public class GremsReliquary implements
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
 
     public static final boolean hasHalation;
+
     static {
         hasHalation = Loader.isModLoaded("Halation");
         if (hasHalation) {
@@ -270,9 +274,14 @@ public class GremsReliquary implements
     public void receiveRelicGet(AbstractRelic obtainedRelic) {
         System.out.println("HEY A RELIC WAS OBTAINED!: " + obtainedRelic.relicId);
         if (obtainedRelic.relicId.equals(NeowsTentacle.ID)) {
-            AbstractDungeon.effectList.add(new NeowTentacleEffect(obtainedRelic));
-            // obtainedRelic.onTrigger();
-
+            if (neowEffectOn) {
+                int roll = AbstractDungeon.relicRng.random(RelicLibrary.uncommonList.size());
+                AbstractRelic replacement = RelicLibrary.uncommonList.get(roll).makeCopy();
+                System.out.println("WE CAN'T DO NEOW'S TENTACLE WHILE DOING NEOW'S TENTACLE. Have this one instead: " + replacement.name);
+                obtainedRelic = RelicLibrary.uncommonList.get(roll).makeCopy();
+            } else {
+                AbstractDungeon.effectList.add(new NeowTentacleEffect(obtainedRelic));
+            }
         }
     }
 }
