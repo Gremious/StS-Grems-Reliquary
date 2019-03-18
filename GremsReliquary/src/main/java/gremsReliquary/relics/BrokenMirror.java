@@ -8,20 +8,20 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import gremsReliquary.GremsReliquary;
+import gremsReliquary.util.TextureLoader;
 
 public class BrokenMirror extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(BrokenMirror.class.getSimpleName());
-    public static final String IMG = GremsReliquary.getModID() + "Resources/images/relics/placeholder_relic.png";
-    public static final String OUTLINE = GremsReliquary.getModID() + "Resources/images/relics/outline/placeholder_relic.png";
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/BrokenMirror.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/BrokenMirror.png");
     public static int amount = 2;
     AbstractCreature p = AbstractDungeon.player;
     
     public BrokenMirror() {
-        super(ID, ImageMaster.loadImage(IMG), new Texture(OUTLINE), RelicTier.UNCOMMON, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.CLINK);
     }
     
     @Override
