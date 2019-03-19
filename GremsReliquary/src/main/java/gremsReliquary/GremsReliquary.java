@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import gremsReliquary.relics.cursed.UnbalancedScales;
 import gremsReliquary.relics.normal.BrokenMirror;
 import gremsReliquary.relics.normal.TimeIsMoney;
 import gremsReliquary.util.TextureLoader;
@@ -56,10 +57,10 @@ public class GremsReliquary implements
     // Settings buttons
     public static Properties gremsReliquaryDefaultSettings = new Properties();
     public static final String PROP_ENABLE_NORMALS = "enableNormals";
-    public static boolean enableNormals = false;
+    public static boolean enableNormals = true;
     
     public static final String PROP_ENABLE_CURSED = "enableCursed";
-    public static boolean enableCursed = false;
+    public static boolean enableCursed = true;
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "gremsReliquaryResources/images/Badge.png";
@@ -153,7 +154,7 @@ public class GremsReliquary implements
         });
         
         ModLabeledToggleButton enableCursedButton = new ModLabeledToggleButton("Enable the cursed relics. You must restart the game for changes to take effect.",
-                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                650.0f, 800.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 enableCursed, settingsPanel, (label) -> {
         }, (button) -> {
             enableCursed = button.enabled;
@@ -190,13 +191,15 @@ public class GremsReliquary implements
         if (enableNormals) {
             BaseMod.addRelic(new TimeIsMoney(), RelicType.SHARED);
             BaseMod.addRelic(new BrokenMirror(), RelicType.SHARED);
+            
             //==
             UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
             UnlockTracker.markRelicAsSeen(BrokenMirror.ID);
         }
         
         if (enableCursed) {
-        
+            BaseMod.addRelic(new UnbalancedScales(), RelicType.SHARED);
+            UnlockTracker.markRelicAsSeen(UnbalancedScales.ID);
         }
         
         logger.info("Done adding relics!");

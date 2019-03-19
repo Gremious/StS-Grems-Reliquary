@@ -6,7 +6,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.vfx.GlowRelicParticle;
 import gremsReliquary.rewards.LinkedRewardItem;
+import gremsReliquary.util.TextureLoader;
 
 import java.util.ArrayList;
 import java.util.List;

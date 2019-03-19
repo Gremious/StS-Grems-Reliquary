@@ -1,4 +1,4 @@
-package gremsReliquary.effects;
+package gremsReliquary.effects.utility;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

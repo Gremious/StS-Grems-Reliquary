@@ -22,7 +22,7 @@ public class BrokenMirror extends AbstractGremRelic {
     AbstractCreature p = AbstractDungeon.player;
     
     public BrokenMirror() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.NORMAL, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.CURSED, LandingSound.CLINK);
     }
     
     @Override
