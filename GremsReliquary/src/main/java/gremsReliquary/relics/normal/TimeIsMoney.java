@@ -1,12 +1,11 @@
-package gremsReliquary.relics;
+package gremsReliquary.relics.normal;
 
-import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import gremsReliquary.GremsReliquary;
+import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.sound;

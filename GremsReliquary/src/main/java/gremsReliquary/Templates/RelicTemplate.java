@@ -2,10 +2,10 @@ package gremsReliquary.Templates;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.neow.NeowReward;
 import gremsReliquary.GremsReliquary;
+import gremsReliquary.relics.normal.NeowsTentacle;
 import gremsReliquary.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +16,7 @@ import static gremsReliquary.GremsReliquary.makeRelicPath;
 public class RelicTemplate extends CustomRelic {
     protected static final Logger logger = LogManager.getLogger(RelicTemplate.class.getName());
 
-    public static final String ID = GremsReliquary.makeID(gremsReliquary.relics.NeowsTentacle.class.getSimpleName());
+    public static final String ID = GremsReliquary.makeID(NeowsTentacle.class.getSimpleName());
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("NeowsTentacle.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("NeowsTentacle.png"));
 

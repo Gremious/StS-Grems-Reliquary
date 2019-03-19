@@ -1,4 +1,4 @@
-package gremsReliquary.relics;
+package gremsReliquary.relics.normal;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import gremsReliquary.GremsReliquary;
+import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
 
 public class BrokenMirror extends AbstractGremRelic {

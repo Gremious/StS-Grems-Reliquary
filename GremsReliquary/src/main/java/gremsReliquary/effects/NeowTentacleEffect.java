@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.neow.NeowReward;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import gremsReliquary.relics.NeowsTentacle;
+import gremsReliquary.relics.normal.NeowsTentacle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,10 +1,9 @@
-package gremsReliquary.relics;
+package gremsReliquary.relics.normal;
 
-import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.neow.NeowReward;
 import gremsReliquary.GremsReliquary;
+import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
 
 import static gremsReliquary.GremsReliquary.makeRelicOutlinePath;
