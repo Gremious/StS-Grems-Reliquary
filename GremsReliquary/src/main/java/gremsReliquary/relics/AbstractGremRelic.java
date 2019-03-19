@@ -7,11 +7,19 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class AbstractGremRelic extends CustomRelic {
     
-    public AbstractGremRelic(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx) {
+    public AbstractGremRelic(String id, Texture texture, Texture outline, RelicTier tier, GremRelicType type, LandingSound sfx) {
         super(id, "", tier, sfx);
     }
     
     public static void act(AbstractGameAction action) {
         AbstractDungeon.actionManager.addToBottom(action);
+    }
+    
+    public enum GremRelicType {
+        CURSED,
+        NORMAL;
+        
+        private GremRelicType() {
+        }
     }
 }

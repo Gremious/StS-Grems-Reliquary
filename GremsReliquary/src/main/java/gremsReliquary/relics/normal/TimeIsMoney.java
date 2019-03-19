@@ -19,7 +19,7 @@ public class TimeIsMoney extends AbstractGremRelic {
     private boolean usedThisTurn = false;
     
     public TimeIsMoney() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, GremRelicType.NORMAL, LandingSound.CLINK);
     }
     
     public void atTurnStart() {
