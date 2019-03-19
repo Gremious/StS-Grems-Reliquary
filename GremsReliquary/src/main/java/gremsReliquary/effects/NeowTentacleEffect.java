@@ -23,7 +23,6 @@ public class NeowTentacleEffect extends AbstractGameEffect {
     int roll = AbstractDungeon.relicRng.random(3);
     private AbstractRelic relicInstance;
     private boolean openedGridScreen;
-    public static boolean neowEffectOn = false;
 
 /*
     private boolean simulatedCheck;
@@ -55,7 +54,6 @@ public class NeowTentacleEffect extends AbstractGameEffect {
 
     public void update() {
         if (duration == Settings.ACTION_DUR_FAST) {
-            neowEffectOn = true;
             logger.info("NeowTentacleEffect update started");
             logger.info("openedGridScreen" + openedGridScreen);
             if (!openedGridScreen) {
@@ -68,15 +66,14 @@ public class NeowTentacleEffect extends AbstractGameEffect {
             }
             logger.info("This should spam while screen is up");
         } else {
-            logger.info("No longer starting duration. Updating " + rewards.get(roll).type);
+            logger.info("No longer starting duration: " + (duration == Settings.ACTION_DUR_FAST));
 
             rewards.get(roll).update();
             relicInstance.flash();
             ((NeowsTentacle) relicInstance).setDescriptionAfterLoading(rewards.get(roll).optionLabel);
             relicInstance.stopPulse();
             NeowEvent.rng = null;
-            neowEffectOn = false;
-            isDone = true;
+            tickDuration();
         }
         tickDuration();
     }
