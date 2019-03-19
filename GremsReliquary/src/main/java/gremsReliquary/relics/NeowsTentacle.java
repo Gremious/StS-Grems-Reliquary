@@ -10,7 +10,7 @@ import gremsReliquary.util.TextureLoader;
 import static gremsReliquary.GremsReliquary.makeRelicOutlinePath;
 import static gremsReliquary.GremsReliquary.makeRelicPath;
 
-public class NeowsTentacle extends CustomRelic {
+public class NeowsTentacle extends AbstractGremRelic {
 
 
     public static final String ID = GremsReliquary.makeID(NeowsTentacle.class.getSimpleName());

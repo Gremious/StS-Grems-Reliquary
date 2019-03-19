@@ -11,7 +11,7 @@ import gremsReliquary.util.TextureLoader;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.sound;
 
-public class TimeIsMoney extends CustomRelic {
+public class TimeIsMoney extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(TimeIsMoney.class.getSimpleName());
     public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/BrokenMirror.png");
     public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/BrokenMirror.png");
