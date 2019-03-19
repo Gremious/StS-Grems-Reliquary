@@ -16,7 +16,7 @@ public class NeowsTentacle extends AbstractGremRelic {
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("NeowsTentacle.png"));
     
     public NeowsTentacle() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, GremRelicType.NORMAL, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.NORMAL, LandingSound.MAGICAL);
     }
     
     @Override
