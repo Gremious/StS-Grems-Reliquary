@@ -23,17 +23,20 @@ public class CursedRelicLinkRewardPatch {
     )
     public static void Insert(AbstractRoom __instance) {
         logger.info(CursedRelicLinkRewardPatch.class.getSimpleName() + " triggered");
+        AbstractRelic relic = null;
         for (RewardItem r : AbstractDungeon.getCurrRoom().rewards) {
-            logger.info("Pritning out the rewards for this room: " + r.type + ": " + r);
+            logger.info("Pritning out the rewards for this room: " + r.type);
             if (r.type == RewardItem.RewardType.RELIC) {
                 logger.info("We got a relic reward.");
-                AbstractRelic relic = r.relic;
-                logger.info("That relic is: " + relic.name + " ID: " + relic.relicId);
+                logger.info("That relic is: " + r.relic.name + " ID: " + r.relic.relicId);
                 if (r.relic instanceof AbstractGremRelic) {
-                    ((AbstractGremRelic) relic).curseTrigger();
-                    AbstractDungeon.combatRewardScreen.setupItemReward();
+                    relic = r.relic;
                 }
             }
+        }
+        if (relic != null) {
+            ((AbstractGremRelic) relic).curseTrigger();
+            AbstractDungeon.combatRewardScreen.setupItemReward();
         }
     }
     

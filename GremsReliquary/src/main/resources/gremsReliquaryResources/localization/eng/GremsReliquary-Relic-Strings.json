@@ -37,12 +37,32 @@
       "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Gain lose #b10 #yStrength and gain #g10 Dexterity."
     ]
   },
+  "theDefault:CursedBottle": {
+    "NAME": "Cursed Bottle",
+    "FLAVOR": "You can put anything you want in here...but should you?...",
+    "DESCRIPTIONS": [
+      "Choose a card. At the start of each turn, if that card is in your draw or discard pile - draw it. NL At the end of each turn, shuffle a #pDecay into your discard pile.",
+      "At the start of each turn, put ",
+      " into your hand. NL At the end of each turn, shuffle a #pDecay into your discard pile.",
+      "Select a card to bottle for "
+    ]
+  },
   "gremsReliquary:DefaultClickableRelic": {
     "NAME": "Right-Clicky Relic",
     "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
     "DESCRIPTIONS": [
       "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
       "YOU ARE MINE!"
+    ]
+  },
+  "theDefault:BottledPlaceholderRelic": {
+    "NAME": "Bottled Placeholder",
+    "FLAVOR": "What is this?",
+    "DESCRIPTIONS": [
+      "Choose a card. Whenever you take play any card, draw the chosen card.",
+      "Whenever you play a card, draw ",
+      ".",
+      "Select a card to bottle for "
     ]
   }
 }

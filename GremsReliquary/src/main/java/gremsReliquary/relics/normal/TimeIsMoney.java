@@ -12,14 +12,14 @@ import static com.megacrit.cardcrawl.core.CardCrawlGame.sound;
 
 public class TimeIsMoney extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(TimeIsMoney.class.getSimpleName());
-    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/BrokenMirror.png");
-    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/BrokenMirror.png");
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
     public static int amount = 2;
     
     private boolean usedThisTurn = false;
     
     public TimeIsMoney() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.CURSED, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, RelicType.CURSED, LandingSound.CLINK);
     }
     
     public void atTurnStart() {

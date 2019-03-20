@@ -4,11 +4,10 @@ import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.vfx.GlowRelicParticle;
 import gremsReliquary.rewards.LinkedRewardItem;
-import gremsReliquary.util.TextureLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +17,11 @@ public class AbstractGremRelic extends CustomRelic {
     public static RelicType type;
     
     public AbstractGremRelic(String id, Texture texture, Texture outline, RelicTier tier, RelicType type, LandingSound sfx) {
-        super(id, "", tier, sfx);
+        super(id, texture, tier, sfx);
         this.type = type;
+        cursedDescription();
+        tips.clear();
+        tips.add(new PowerTip(name, description));
     }
     
     public static void act(AbstractGameAction action) {
@@ -28,7 +30,6 @@ public class AbstractGremRelic extends CustomRelic {
     
     public static void curseTrigger() {
         if (type == RelicType.CURSED) {
-            
             List<RewardItem> relicRewards = new ArrayList<>();
             for (RewardItem reward : AbstractDungeon.getCurrRoom().rewards) {
                 if (reward.type == RewardItem.RewardType.RELIC && reward.relicLink == null) {
@@ -58,6 +59,12 @@ public class AbstractGremRelic extends CustomRelic {
                     }
                 }
             }
+        }
+    }
+    
+    private void cursedDescription() {
+        if (type == RelicType.CURSED) {
+            this.description = "Cursed. NL " + description;
         }
     }
     
