@@ -3,8 +3,10 @@ package gremsReliquary.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import gremsReliquary.rewards.LinkedRewardItem;
@@ -12,9 +14,13 @@ import gremsReliquary.rewards.LinkedRewardItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import static gremsReliquary.GremsReliquary.getModID;
+
 public class AbstractGremRelic extends CustomRelic {
     
     public static RelicType type;
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(getModID() + "RelicsUI");
+    public static final String[] UI_STRINGS = uiStrings.TEXT;
     
     public AbstractGremRelic(String id, Texture texture, Texture outline, RelicTier tier, RelicType type, LandingSound sfx) {
         super(id, texture, tier, sfx);
@@ -64,7 +70,7 @@ public class AbstractGremRelic extends CustomRelic {
     
     private void cursedDescription() {
         if (type == RelicType.CURSED) {
-            this.description = "Cursed. NL " + description;
+            this.description = UI_STRINGS[0] + description;
         }
     }
     

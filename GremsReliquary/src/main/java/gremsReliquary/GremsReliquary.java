@@ -227,7 +227,10 @@ public class GremsReliquary implements
         
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-Power-Strings.json");
-        
+       
+        // UIStrings
+        BaseMod.loadCustomStringsFile(UIStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-UI-Strings.json");
+    
         // EventStrings
         BaseMod.loadCustomStringsFile(EventStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-Event-Strings.json");
         

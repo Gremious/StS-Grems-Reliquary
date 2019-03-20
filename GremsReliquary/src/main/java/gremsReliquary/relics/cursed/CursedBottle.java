@@ -38,7 +38,7 @@ public class CursedBottle extends AbstractGremRelic implements CustomBottleRelic
     public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
     
     public CursedBottle() {
-        super(ID, IMG, OUTLINE, RelicTier.COMMON, RelicType.CURSED, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.RARE, RelicType.CURSED, LandingSound.CLINK);
       
     }
     
