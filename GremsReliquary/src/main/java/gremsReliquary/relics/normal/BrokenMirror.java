@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import gremsReliquary.GremsReliquary;
 import gremsReliquary.relics.AbstractGremRelic;
@@ -28,9 +27,9 @@ public class BrokenMirror extends AbstractGremRelic {
     @Override
     public void onUseCard(AbstractCard card, UseCardAction useCardAction) {
         if (card.type == AbstractCard.CardType.ATTACK
-                && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+                && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT
+                && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flash();
-            AbstractMonster rm = AbstractDungeon.getRandomMonster(null);
             act(new DamageRandomEnemyAction(new DamageInfo(p, 2, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
     }

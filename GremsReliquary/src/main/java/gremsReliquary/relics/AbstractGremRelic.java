@@ -114,34 +114,37 @@ public class AbstractGremRelic extends CustomRelic {
     }
     
     private void updateGlow() {
-        glowTimer -= Gdx.graphics.getDeltaTime();
-        float offsetX = 0.0f;
-        float rotation = 0.0f;
-        
-        try {
-            offsetX = offsetXField.getFloat(offsetXField);
-            rotation = offsetXField.getFloat(offsetXField);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        
-        if (glowTimer < 0.0F) {
-            if (pulseCount < 3) {
-                glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
-                pulseCount++;
-                glowTimer = 0.15F;
-            } else {
-                glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
-                pulseCount = 0;
-                glowTimer = 1.5F;
+        if (type.equals(RelicType.CURSED)) {
+            glowTimer -= Gdx.graphics.getDeltaTime();
+            float offsetX = 0.0f;
+            float rotation = 0.0f;
+            
+            try {
+                offsetX = offsetXField.getFloat(offsetXField);
+                rotation = offsetXField.getFloat(offsetXField);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
             }
-        }
-        for (Iterator<CursedRelicBorderGlow> i = glowList.iterator(); i.hasNext(); ) {
-            CursedRelicBorderGlow e = (CursedRelicBorderGlow) i.next();
-            e.update();
-            if (e.isDone) {
-                e.dispose();
-                i.remove();
+            
+            if (glowTimer < 0.0F) {
+                if (pulseCount < 3) {
+                    glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
+                    pulseCount++;
+                    glowTimer = 0.15F;
+                } else {
+                    glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
+                    pulseCount = 0;
+                    glowTimer = 1.5F;
+                }
+            }
+            
+            for (Iterator<CursedRelicBorderGlow> i = glowList.iterator(); i.hasNext(); ) {
+                CursedRelicBorderGlow e = (CursedRelicBorderGlow) i.next();
+                e.update();
+                if (e.isDone) {
+                    e.dispose();
+                    i.remove();
+                }
             }
         }
     }
