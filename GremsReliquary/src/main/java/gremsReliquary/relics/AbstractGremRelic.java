@@ -127,16 +127,22 @@ public class AbstractGremRelic extends CustomRelic {
             }
             
             if (glowTimer < 0.0F) {
+                glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
+                glowTimer = 2.5F;
+            }
+            /*
+            if (glowTimer < 0.0F) {
                 if (pulseCount < 3) {
                     glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
                     pulseCount++;
-                    glowTimer = 0.15F;
+                    glowTimer = 0.7F;
                 } else {
                     glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
                     pulseCount = 0;
                     glowTimer = 1.5F;
                 }
             }
+            */
             
             for (Iterator<CursedRelicBorderGlow> i = glowList.iterator(); i.hasNext(); ) {
                 CursedRelicBorderGlow e = (CursedRelicBorderGlow) i.next();

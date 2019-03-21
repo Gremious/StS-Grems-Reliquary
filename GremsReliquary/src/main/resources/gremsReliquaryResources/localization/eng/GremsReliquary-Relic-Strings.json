@@ -34,10 +34,10 @@
     "NAME": "Unbalanced Scales",
     "FLAVOR": "No matter what or how you put things on this scale, one side will always tip.",
     "DESCRIPTIONS": [
-      "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Gain lose #r10 #yStrength and gain #g10 Dexterity."
+      "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Lose #r10 #yStrength and gain #g10 Dexterity."
     ]
   },
-  "theDefault:CursedBottle": {
+  "gremsReliquary:CursedBottle": {
     "NAME": "Cursed Bottle",
     "FLAVOR": "You can put anything you want in here...but should you?...",
     "DESCRIPTIONS": [

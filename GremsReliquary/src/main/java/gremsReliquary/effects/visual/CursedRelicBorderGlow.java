@@ -19,15 +19,16 @@ public class CursedRelicBorderGlow extends AbstractGameEffect {
     private AbstractRelic relic;
     private Texture img;
     private float scale;
+    private float MAX_DURATION = 2.0f;
     float offsetX = 0f;
     float rotation = 0f;
     
     public CursedRelicBorderGlow(AbstractRelic relic, Texture img, float offsetX, float rotation) {
         this.relic = relic;
         this.img = img;
-        this.duration = 1.2f;
+        this.duration = 2.0f;
         this.color = Color.PURPLE.cpy();
-    
+        
         this.offsetX = offsetX;
         this.rotation = rotation;
     }
@@ -36,9 +37,9 @@ public class CursedRelicBorderGlow extends AbstractGameEffect {
     public void update() {
         if (debug) logger.info(CursedRelicBorderGlow.class.getSimpleName() + " Update log started");
         if (debug) logger.info("Duration is: " + duration);
-        scale = (Interpolation.pow2Out.apply(1.0f, 1.2F, 1.0F - duration)) * relic.scale * Settings.scale;
+        scale = (Interpolation.pow2Out.apply(1.0f, 1.15F, MAX_DURATION - duration)) * relic.scale * Settings.scale;
         
-        color.a = duration / 3.5F;
+        color.a = duration / 1.5F;
         
         this.duration -= Gdx.graphics.getDeltaTime(); //tickDuration();
         if (duration < 0.0F) {
