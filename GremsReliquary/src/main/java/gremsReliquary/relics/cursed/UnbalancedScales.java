@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import gremsReliquary.GremsReliquary;
 import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
@@ -20,7 +21,7 @@ public class UnbalancedScales extends AbstractGremRelic implements ClickableReli
     public static int amount = 2;
     
     AbstractCreature p = AbstractDungeon.player;
-    private static boolean usedThisTurn = false;
+    private static boolean usedThisCombat = false;
     
     public UnbalancedScales() {
         super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.CURSED, LandingSound.CLINK);
@@ -31,7 +32,7 @@ public class UnbalancedScales extends AbstractGremRelic implements ClickableReli
     @Override
     public void atBattleStart() {
         beginLongPulse();
-        usedThisTurn = false;
+        usedThisCombat = false;
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         flash();
         act(new ApplyPowerAction(p, p, new StrengthPower(p, 5), 5));
@@ -51,12 +52,12 @@ public class UnbalancedScales extends AbstractGremRelic implements ClickableReli
     
     @Override
     public void onRightClick() {
-        if (!usedThisTurn) {
+        if (!usedThisCombat && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
             AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
             stopPulse();
             act(new ApplyPowerAction(p, p, new StrengthPower(p, -10), -10));
             act(new ApplyPowerAction(p, p, new DexterityPower(p, 10), 10));
-            usedThisTurn = true;
+            usedThisCombat = true;
         }
     }
 }

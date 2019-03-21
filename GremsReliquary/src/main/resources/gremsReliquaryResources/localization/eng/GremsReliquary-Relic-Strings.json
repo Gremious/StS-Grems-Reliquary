@@ -17,7 +17,7 @@
   },
   "gremsReliquary:BrokenMirror": {
     "NAME": "Broken Mirror",
-    "FLAVOR": "A pretty ornament, albeit not very functional.",
+    "FLAVOR": "A pretty ornament, albeit not a very functional one.",
     "DESCRIPTIONS": [
       "Whenever you play an attack, deal #b",
       " damage to a random enemy."
@@ -34,7 +34,7 @@
     "NAME": "Unbalanced Scales",
     "FLAVOR": "No matter what or how you put things on this scale, one side will always tip.",
     "DESCRIPTIONS": [
-      "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Gain lose #b10 #yStrength and gain #g10 Dexterity."
+      "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Gain lose #r10 #yStrength and gain #g10 Dexterity."
     ]
   },
   "theDefault:CursedBottle": {

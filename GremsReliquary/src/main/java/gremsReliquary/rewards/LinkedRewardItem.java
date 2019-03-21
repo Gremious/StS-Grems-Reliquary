@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class LinkedRewardItem extends RewardItem
-{
+{// Thank you kio!
     public LinkedRewardItem(RewardItem original)
     {
         type = original.type;
@@ -25,7 +25,7 @@ public class LinkedRewardItem extends RewardItem
         goldAmt = original.goldAmt;
         bonusGold = original.bonusGold;
         text = original.text;
-        relicLink = original.relicLink; // TODO?
+        relicLink = original.relicLink;
         relic = original.relic;
         potion = original.potion;
         cards = original.cards;
