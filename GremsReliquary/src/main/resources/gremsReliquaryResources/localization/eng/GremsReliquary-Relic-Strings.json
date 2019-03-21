@@ -17,7 +17,7 @@
   },
   "gremsReliquary:BrokenMirror": {
     "NAME": "Broken Mirror",
-    "FLAVOR": "A pretty ornament, albeit not a very functional one.",
+    "FLAVOR": "A pretty ornament, albeit a questionably functional one.",
     "DESCRIPTIONS": [
       "Whenever you play an attack, deal #b",
       " damage to a random enemy."
@@ -39,9 +39,9 @@
   },
   "gremsReliquary:CursedBottle": {
     "NAME": "Cursed Bottle",
-    "FLAVOR": "You can put anything you want in here...but should you?...",
+    "FLAVOR": "You can put anything you want in here...but should you?",
     "DESCRIPTIONS": [
-      "Choose a card. At the start of each turn, if that card is in your draw or discard pile - draw it. NL At the end of each turn, shuffle a #pDecay into your discard pile.",
+      "Choose a card. At the start of each turn, if that card is in your draw or discard pile - draw it. NL At the end of each turn, shuffle a #pDecay into your draw pile.",
       "At the start of each turn, put ",
       " into your hand. NL At the end of each turn, shuffle a #pDecay into your discard pile.",
       "Select a card to bottle for "

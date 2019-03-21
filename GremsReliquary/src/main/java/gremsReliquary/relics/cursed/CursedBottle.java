@@ -6,7 +6,7 @@ import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.AutoplayCardAction;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.curses.Decay;
@@ -34,12 +34,11 @@ public class CursedBottle extends AbstractGremRelic implements CustomBottleRelic
     
     // ID, images, text.
     public static final String ID = GremsReliquary.makeID(CursedBottle.class.getSimpleName());
-    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png");
-    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/CursedBottle.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/CursedBottle.png");
     
     public CursedBottle() {
         super(ID, IMG, OUTLINE, RelicTier.RARE, RelicType.CURSED, LandingSound.CLINK);
-      
     }
     
     // Now, for making Bottled cards we need a small patch - our own custom SpireField
@@ -169,7 +168,7 @@ public class CursedBottle extends AbstractGremRelic implements CustomBottleRelic
             }
         }
         
-        act(new MakeTempCardInDiscardAction(new Decay(), 1));
+        act(new MakeTempCardInDrawPileAction(new Decay(), 1, true, true));
     }
     
     // Change description after relic is already loaded to reflect the bottled card.
