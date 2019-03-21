@@ -16,8 +16,8 @@ import gremsReliquary.util.TextureLoader;
 
 public class UnbalancedScales extends AbstractGremRelic implements ClickableRelic {
     public static final String ID = GremsReliquary.makeID(UnbalancedScales.class.getSimpleName());
-    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png");
-    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/UnbalancedScales.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/UnbalancedScales.png");
     public static int amount = 2;
     
     AbstractCreature p = AbstractDungeon.player;

@@ -1,7 +1,6 @@
 package gremsReliquary;
 
 import basemod.BaseMod;
-import basemod.ModLabel;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
@@ -16,8 +15,11 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
+import gremsReliquary.relics.cursed.CursedBottle;
 import gremsReliquary.relics.cursed.UnbalancedScales;
 import gremsReliquary.relics.normal.BrokenMirror;
 import gremsReliquary.relics.normal.TimeIsMoney;
@@ -194,13 +196,20 @@ public class GremsReliquary implements
             BaseMod.addRelic(new BrokenMirror(), RelicType.SHARED);
             
             //==
+            /*
             UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
             UnlockTracker.markRelicAsSeen(BrokenMirror.ID);
+            */
         }
         
         if (enableCursed) {
             BaseMod.addRelic(new UnbalancedScales(), RelicType.SHARED);
+            BaseMod.addRelic(new CursedBottle(), RelicType.SHARED);
+            
+            /*
             UnlockTracker.markRelicAsSeen(UnbalancedScales.ID);
+            UnlockTracker.markRelicAsSeen(CursedBottle.ID);
+            */
         }
         
         logger.info("Done adding relics!");
@@ -228,10 +237,10 @@ public class GremsReliquary implements
         
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-Power-Strings.json");
-       
+        
         // UIStrings
         BaseMod.loadCustomStringsFile(UIStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-UI-Strings.json");
-    
+        
         // EventStrings
         BaseMod.loadCustomStringsFile(EventStrings.class, getModID() + "Resources/localization/eng/GremsReliquary-Event-Strings.json");
         
