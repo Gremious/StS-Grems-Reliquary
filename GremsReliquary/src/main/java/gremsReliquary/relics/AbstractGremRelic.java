@@ -2,6 +2,7 @@ package gremsReliquary.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -15,12 +16,18 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import gremsReliquary.effects.visual.CursedRelicBorderGlow;
 import gremsReliquary.rewards.LinkedRewardItem;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static gremsReliquary.GremsReliquary.debug;
+
 public class AbstractGremRelic extends CustomRelic {
+    private static final Logger logger = LogManager.getLogger(AbstractGremRelic.class.getName());
     
     public static RelicType type;
     private Texture outline;
@@ -28,7 +35,22 @@ public class AbstractGremRelic extends CustomRelic {
     public static final String[] UI_STRINGS = uiStrings.TEXT;
     private ArrayList<CursedRelicBorderGlow> glowList = new ArrayList<>();
     private float glowTimer = 0.0F;
-    public boolean isGlowing = false;
+    private int pulseCount = 0;
+    
+    private Field offsetXField;
+    private Field rotationField;
+    
+    {
+        try {
+            offsetXField = AbstractRelic.class.getDeclaredField("offsetX");
+            rotationField = AbstractRelic.class.getDeclaredField("rotation");
+            
+            offsetXField.setAccessible(true);
+            rotationField.setAccessible(true);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
     
     public AbstractGremRelic(String id, Texture texture, Texture outline, RelicTier tier, RelicType type, LandingSound sfx) {
         super(id, texture, tier, sfx);
@@ -81,8 +103,10 @@ public class AbstractGremRelic extends CustomRelic {
     
     private void renderGlow(SpriteBatch sb) {
         if (!Settings.hideRelics) {
+            if (debug) logger.info("render Glow log is on");
             sb.setBlendFunction(770, 1);
             for (AbstractGameEffect e : glowList) {
+                if (debug) logger.info("Triggered glow");
                 e.render(sb);
             }
             sb.setBlendFunction(770, 771);
@@ -90,14 +114,28 @@ public class AbstractGremRelic extends CustomRelic {
     }
     
     private void updateGlow() {
-        if (isGlowing) {
-            glowTimer -= Gdx.graphics.getDeltaTime();
-            if (glowTimer < 0.0F) {
-                glowList.add(new CursedRelicBorderGlow(this, outline));
-                glowTimer = 0.15F;
-            }
+        glowTimer -= Gdx.graphics.getDeltaTime();
+        float offsetX = 0.0f;
+        float rotation = 0.0f;
+        
+        try {
+            offsetX = offsetXField.getFloat(offsetXField);
+            rotation = offsetXField.getFloat(offsetXField);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
         
+        if (glowTimer < 0.0F) {
+            if (pulseCount < 3) {
+                glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
+                pulseCount++;
+                glowTimer = 0.15F;
+            } else {
+                glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
+                pulseCount = 0;
+                glowTimer = 1.5F;
+            }
+        }
         for (Iterator<CursedRelicBorderGlow> i = glowList.iterator(); i.hasNext(); ) {
             CursedRelicBorderGlow e = (CursedRelicBorderGlow) i.next();
             e.update();
@@ -108,29 +146,32 @@ public class AbstractGremRelic extends CustomRelic {
         }
     }
     
-    public void beginGlowing() {
-        this.isGlowing = true;
-    }
-    
-    public void stopGlowing() {
-        this.isGlowing = false;
-        for (CursedRelicBorderGlow e : glowList) {
-            e.duration /= 5.0F;
-        }
-    }
-    
     @Override
     public void renderInTopPanel(SpriteBatch sb) {
-        super.renderInTopPanel(sb);
         updateGlow();
         renderGlow(sb);
+        super.renderInTopPanel(sb);
     }
     
     @Override
     public void render(SpriteBatch sb) {
-        super.render(sb);
         updateGlow();
         renderGlow(sb);
+        super.render(sb);
+    }
+    
+    @Override
+    public void render(SpriteBatch sb, boolean renderAmount, Color outlineColor) {
+        updateGlow();
+        renderGlow(sb);
+        super.render(sb, renderAmount, outlineColor);
+    }
+    
+    @Override
+    public void renderWithoutAmount(SpriteBatch sb, Color c) {
+        updateGlow();
+        renderGlow(sb);
+        super.renderWithoutAmount(sb, c);
     }
     
     //==
