@@ -13,15 +13,19 @@ import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import gremsReliquary.relics.cursed.CursedBottle;
 import gremsReliquary.relics.cursed.UnbalancedScales;
 import gremsReliquary.relics.normal.BrokenMirror;
+import gremsReliquary.relics.normal.Placeholder;
 import gremsReliquary.relics.normal.TimeIsMoney;
 import gremsReliquary.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
@@ -37,7 +41,7 @@ public class GremsReliquary implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         PostInitializeSubscriber
-        /*,RelicGetSubscriber*/ {
+        , RelicGetSubscriber {
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
     public static boolean debug = false;
     
@@ -275,17 +279,15 @@ public class GremsReliquary implements
     
     // ================ /LOAD THE KEYWORDS/ ===================
     
-
-  /*  @Override
->>>>>>> feature/broken-mirror
-    public void receiveRelicGet(AbstractRelic obtainedRelic) {
-        System.out.println("HEY A RELIC WAS OBTAINED!: " + obtainedRelic.relicId);
-        if (obtainedRelic.relicId.equals(NeowsTentacle.ID)) {
-            AbstractDungeon.effectList.add(new NeowTentacleEffect(obtainedRelic));
-            // obtainedRelic.onTrigger();
-            
+    @Override
+    public void receiveRelicGet(AbstractRelic abstractRelic) {
+        if (AbstractDungeon.player.hasRelic(Placeholder.ID)) {
+            AbstractDungeon.player.getRelic(Placeholder.ID).flash();
+            CardCrawlGame.sound.play("AUTOMATON_ORB_SPAWN");
+            AbstractDungeon.player.loseRelic(Placeholder.ID);
+            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), abstractRelic.makeCopy());
         }
-}*/
+    }
     
     // ====== NO EDIT AREA ======
     // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARDIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.

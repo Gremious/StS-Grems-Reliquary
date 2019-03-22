@@ -23,18 +23,18 @@
       " damage to a random enemy."
     ]
   },
-  "gremsReliquary:PlaceholderRelic2": {
-    "NAME": "Test Relic",
-    "FLAVOR": "tttt",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain #b1 #yStrength."
-    ]
-  },
   "gremsReliquary:UnbalancedScales": {
     "NAME": "Unbalanced Scales",
     "FLAVOR": "No matter what or how you put things on this scale, one side will always tip.",
     "DESCRIPTIONS": [
       "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Lose #r10 #yStrength and gain #g10 Dexterity."
+    ]
+  },
+  "gremsReliquary:Placeholder": {
+    "NAME": "Placeholder",
+    "FLAVOR": "A d####efault relic.",
+    "DESCRIPTIONS": [
+      "Becomes a copy of the next relic you obtain."
     ]
   },
   "gremsReliquary:CursedBottle": {
