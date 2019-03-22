@@ -12,8 +12,8 @@ import static com.megacrit.cardcrawl.core.CardCrawlGame.sound;
 
 public class TimeIsMoney extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(TimeIsMoney.class.getSimpleName());
-    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png");
-    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/TimeIsMoney.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/TimeIsMoney.png");
     public static int amount = 2;
     
     private boolean usedThisTurn = false;
