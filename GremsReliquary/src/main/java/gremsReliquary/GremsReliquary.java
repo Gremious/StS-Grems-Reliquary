@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import gremsReliquary.effects.utility.PlaceholderRelicEffect;
 import gremsReliquary.relics.cursed.CursedBottle;
+import gremsReliquary.relics.cursed.CursedEgg;
 import gremsReliquary.relics.cursed.UnbalancedScales;
 import gremsReliquary.relics.normal.BrokenMirror;
 import gremsReliquary.relics.normal.Placeholder;
@@ -195,6 +196,19 @@ public class GremsReliquary implements
         // This adds a relic to the Shared pool. Every character can find this relic.
         //   BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
         // UnlockTracker.markRelicAsSeen(NeowsTentacle.ID);
+        
+        if (enableCursed) {
+            BaseMod.addRelic(new UnbalancedScales(), RelicType.SHARED);
+            BaseMod.addRelic(new CursedBottle(), RelicType.SHARED);
+            BaseMod.addRelic(new CursedEgg(), RelicType.SHARED);
+            
+            /*
+            UnlockTracker.markRelicAsSeen(UnbalancedScales.ID);
+            UnlockTracker.markRelicAsSeen(CursedBottle.ID);
+            UnlockTracker.markRelicAsSeen(CursedEgg.ID);
+            */
+        }
+        
         if (enableNormals) {
             BaseMod.addRelic(new TimeIsMoney(), RelicType.SHARED);
             BaseMod.addRelic(new BrokenMirror(), RelicType.SHARED);
@@ -205,16 +219,6 @@ public class GremsReliquary implements
             UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
             UnlockTracker.markRelicAsSeen(BrokenMirror.ID);
             UnlockTracker.markRelicAsSeen(Placeholder.ID);
-            */
-        }
-        
-        if (enableCursed) {
-            BaseMod.addRelic(new UnbalancedScales(), RelicType.SHARED);
-            BaseMod.addRelic(new CursedBottle(), RelicType.SHARED);
-            
-            /*
-            UnlockTracker.markRelicAsSeen(UnbalancedScales.ID);
-            UnlockTracker.markRelicAsSeen(CursedBottle.ID);
             */
         }
         

@@ -37,6 +37,20 @@
       "Becomes a copy of the next relic you obtain."
     ]
   },
+  "gremsReliquary:CursedEgg": {
+    "NAME": "Cursed Egg",
+    "FLAVOR": "You feel a constant sense of unease, carrying this around.",
+    "DESCRIPTIONS": [
+      "Whenever you add any card into your deck, Upgrade it. NL Whenever you enter a Rest Site, replace a random Upgraded card in your deck with a Strike or Defend, at random."
+    ]
+  },
+  "gremsReliquary:test": {
+    "NAME": "test",
+    "FLAVOR": "test",
+    "DESCRIPTIONS": [
+      "test"
+    ]
+  },
   "gremsReliquary:CursedBottle": {
     "NAME": "Cursed Bottle",
     "FLAVOR": "You can put anything you want in here...but should you?",
