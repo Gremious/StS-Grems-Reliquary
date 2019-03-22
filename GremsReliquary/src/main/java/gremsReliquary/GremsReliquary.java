@@ -13,7 +13,6 @@ import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -22,6 +21,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import gremsReliquary.effects.utility.PlaceholderRelicEffect;
 import gremsReliquary.relics.cursed.CursedBottle;
 import gremsReliquary.relics.cursed.UnbalancedScales;
 import gremsReliquary.relics.normal.BrokenMirror;
@@ -198,11 +198,13 @@ public class GremsReliquary implements
         if (enableNormals) {
             BaseMod.addRelic(new TimeIsMoney(), RelicType.SHARED);
             BaseMod.addRelic(new BrokenMirror(), RelicType.SHARED);
+            BaseMod.addRelic(new Placeholder(), RelicType.SHARED);
             
             //==
             /*
             UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
             UnlockTracker.markRelicAsSeen(BrokenMirror.ID);
+            UnlockTracker.markRelicAsSeen(Placeholder.ID);
             */
         }
         
@@ -282,10 +284,7 @@ public class GremsReliquary implements
     @Override
     public void receiveRelicGet(AbstractRelic abstractRelic) {
         if (AbstractDungeon.player.hasRelic(Placeholder.ID)) {
-            AbstractDungeon.player.getRelic(Placeholder.ID).flash();
-            CardCrawlGame.sound.play("AUTOMATON_ORB_SPAWN");
-            AbstractDungeon.player.loseRelic(Placeholder.ID);
-            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), abstractRelic.makeCopy());
+            AbstractDungeon.effectsQueue.add(AbstractDungeon.effectsQueue.size() - 1, new PlaceholderRelicEffect(abstractRelic));
         }
     }
     
