@@ -28,7 +28,13 @@ public class CursedEgg extends AbstractGremRelic {
     }
     
     @Override
+    public void onObtainCard(AbstractCard c) {
+        flash();
+    }
+    
+    @Override
     public void onEnterRestRoom() {
+        flash();
         CardGroup unupgradedCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         
         AbstractCard strike = null;
@@ -38,8 +44,6 @@ public class CursedEgg extends AbstractGremRelic {
         
         unupgradedCards.group.addAll(AbstractDungeon.player.masterDeck.group);
         unupgradedCards.group.removeIf(c -> !c.upgraded);
-        
-        
         
         
         while (strike == null || defend == null) {
@@ -75,7 +79,7 @@ public class CursedEgg extends AbstractGremRelic {
         
         if (roll == 0) {
             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(strike, (float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2)));
-        } else{
+        } else {
             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(defend, (float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2)));
         }
     }
@@ -83,6 +87,6 @@ public class CursedEgg extends AbstractGremRelic {
     // Description
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0];
     }
 }
