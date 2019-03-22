@@ -1,26 +1,25 @@
-package gremsReliquary.relics;
+package gremsReliquary.relics.normal;
 
-import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import gremsReliquary.GremsReliquary;
+import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.sound;
 
 public class TimeIsMoney extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(TimeIsMoney.class.getSimpleName());
-    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/BrokenMirror.png");
-    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/BrokenMirror.png");
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/TimeIsMoney.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/TimeIsMoney.png");
     public static int amount = 2;
     
     private boolean usedThisTurn = false;
     
     public TimeIsMoney() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, RelicType.NORMAL, LandingSound.CLINK);
     }
     
     public void atTurnStart() {

@@ -17,17 +17,34 @@
   },
   "gremsReliquary:BrokenMirror": {
     "NAME": "Broken Mirror",
-    "FLAVOR": "A pretty ornament, albeit not very functional.",
+    "FLAVOR": "A pretty ornament, albeit a questionably functional one.",
     "DESCRIPTIONS": [
       "Whenever you play an attack, deal #b",
       " damage to a random enemy."
     ]
   },
-  "gremsReliquary:PlaceholderRelic2": {
-    "NAME": "Test Relic",
-    "FLAVOR": "tttt",
+  "gremsReliquary:UnbalancedScales": {
+    "NAME": "Unbalanced Scales",
+    "FLAVOR": "No matter what or how you put things on this scale, one side will always tip.",
     "DESCRIPTIONS": [
-      "At the start of each combat, gain #b1 #yStrength."
+      "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Lose #r10 #yStrength and gain #g10 Dexterity."
+    ]
+  },
+  "gremsReliquary:Placeholder": {
+    "NAME": "Placeholder",
+    "FLAVOR": "A d####efault relic.",
+    "DESCRIPTIONS": [
+      "Becomes a copy of the next relic you obtain."
+    ]
+  },
+  "gremsReliquary:CursedBottle": {
+    "NAME": "Cursed Bottle",
+    "FLAVOR": "You can put anything you want in here...but should you?",
+    "DESCRIPTIONS": [
+      "Choose a card. At the start of each turn, if that card is in your draw or discard pile - draw it. NL At the end of each turn, shuffle a #pDecay into your draw pile.",
+      "At the start of each turn, put ",
+      " into your hand. NL At the end of each turn, shuffle a #pDecay into your discard pile.",
+      "Select a card to bottle for "
     ]
   },
   "gremsReliquary:DefaultClickableRelic": {
@@ -36,6 +53,16 @@
     "DESCRIPTIONS": [
       "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
       "YOU ARE MINE!"
+    ]
+  },
+  "theDefault:BottledPlaceholderRelic": {
+    "NAME": "Bottled Placeholder",
+    "FLAVOR": "What is this?",
+    "DESCRIPTIONS": [
+      "Choose a card. Whenever you take play any card, draw the chosen card.",
+      "Whenever you play a card, draw ",
+      ".",
+      "Select a card to bottle for "
     ]
   }
 }
