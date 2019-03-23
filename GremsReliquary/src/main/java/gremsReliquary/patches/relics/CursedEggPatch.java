@@ -27,10 +27,10 @@ public class CursedEggPatch {
                 locator = getRewardCardsLocator.class,
                 localvars = {"c"}
         )
-        public static void Insert(@ByRef AbstractCard c) {
+        public static void Insert(@ByRef AbstractCard[] c) {
             logger.info(getRewardCardsPatch.class.getSimpleName() + " triggered");
             if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
-                c.upgrade();
+                c[0].upgrade();
             }
         }
         
@@ -53,17 +53,17 @@ public class CursedEggPatch {
                 locator = buttonEffectLocator.class,
                 localvars = {"card"}
         )
-        public static void Insert(TheLibrary __instance, @ByRef AbstractCard card) {
+        public static void Insert(TheLibrary __instance, int buttonPressed, @ByRef AbstractCard[] card) {
             logger.info(TheLibraryPatch.class.getSimpleName() + " triggered");
             if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
-                card.upgrade();
+                card[0].upgrade();
             }
         }
         
         private static class buttonEffectLocator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-                Matcher finalMatcher = new Matcher.FieldAccessMatcher(CardGroup.class, "addToBottom");
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(CardGroup.class, "addToBottom");
                 return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
                 // return new int[]{LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher)[0]};
             }
@@ -79,10 +79,10 @@ public class CursedEggPatch {
                 locator = initializeCardsLocator.class,
                 localvars = {"c"}
         )
-        public static void Insert(GremlinMatchGame __instance, @ByRef AbstractCard c) {
+        public static void Insert(GremlinMatchGame __instance, @ByRef AbstractCard[] c) {
             logger.info(GremlinMatchGamePatch.class.getSimpleName() + " triggered");
             if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
-                c.upgrade();
+                c[0].upgrade();
             }
         }
         
@@ -108,10 +108,10 @@ public class CursedEggPatch {
                 locator = RewardItemLocator.class,
                 localvars = {"c"}
         )
-        public static void Insert(@ByRef AbstractCard c) {
+        public static void Insert(RewardItem __instance, AbstractCard.CardColor colorType, @ByRef AbstractCard[] c) {
             logger.info(RewardItemPatch.class.getSimpleName() + " triggered");
             if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
-                c.upgrade();
+                c[0].upgrade();
             }
         }
         
@@ -135,10 +135,10 @@ public class CursedEggPatch {
                 locator = RewardItemLocator1.class,
                 localvars = {"c"}
         )
-        public static void Insert1(ShopScreen __instance, @ByRef AbstractCard c) {
+        public static void Insert1(ShopScreen __instance, @ByRef AbstractCard[] c) {
             logger.info(ShopScreenInitCardsPatch.class.getSimpleName() + " triggered");
             if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
-                c.upgrade();
+                c[0].upgrade();
             }
         }
         
@@ -155,10 +155,10 @@ public class CursedEggPatch {
                 locator = RewardItemLocator2.class,
                 localvars = {"c"}
         )
-        public static void Insert2(ShopScreen __instance, @ByRef AbstractCard c) {
+        public static void Insert2(ShopScreen __instance, @ByRef AbstractCard[] c) {
             logger.info(ShopScreenInitCardsPatch.class.getSimpleName() + " triggered");
             if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
-                c.upgrade();
+                c[0].upgrade();
             }
         }
         
@@ -182,10 +182,10 @@ public class CursedEggPatch {
                 locator = RewardItemLocator1.class,
                 localvars = {"c"}
         )
-        public static void Insert1(ShopScreen __instance, @ByRef AbstractCard c) {
-            logger.info(ShopScreenInitCardsPatch.class.getSimpleName() + " triggered");
+        public static void Insert1(ShopScreen __instance, @ByRef AbstractCard[] c) {
+            logger.info(ShopScreenUpdatePatch.class.getSimpleName() + " triggered 1");
             if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
-                c.upgrade();
+                c[0].upgrade();
             }
         }
         
@@ -202,10 +202,10 @@ public class CursedEggPatch {
                 locator = RewardItemLocator2.class,
                 localvars = {"c"}
         )
-        public static void Insert2(ShopScreen __instance, @ByRef AbstractCard c) {
-            logger.info(ShopScreenInitCardsPatch.class.getSimpleName() + " triggered");
+        public static void Insert2(ShopScreen __instance, @ByRef AbstractCard[] c) {
+            logger.info(ShopScreenUpdatePatch.class.getSimpleName() + " triggered 2");
             if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
-                c.upgrade();
+                c[0].upgrade();
             }
         }
         
@@ -214,7 +214,7 @@ public class CursedEggPatch {
             public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
                 Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractCard.class, "type");
                 //return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
-                return new int[]{LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher)[3]};
+                return new int[]{LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher)[5]};
             }
         }
     }
@@ -228,9 +228,9 @@ public class CursedEggPatch {
                 locator = RewardItemLocator.class,
                 localvars = {"relic", "shopScreen"}
         )
-        public static void Insert(StoreRelic __instance, AbstractRelic relic, ShopScreen shopScreen) {
+        public static void Insert(StoreRelic __instance, float rugY, AbstractRelic relic, ShopScreen shopScreen) {
             logger.info(RewardItemPatch.class.getSimpleName() + " triggered");
-    
+            
             if (relic.relicId.equals(CursedEgg.ID)) {
                 shopScreen.applyUpgrades(AbstractCard.CardType.SKILL);
                 shopScreen.applyUpgrades(AbstractCard.CardType.ATTACK);

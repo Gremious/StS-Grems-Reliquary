@@ -17,8 +17,8 @@ import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.miscRng;
 
 public class CursedEgg extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(CursedEgg.class.getSimpleName());
-    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png");
-    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/CursedEgg.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/CursedEgg.png");
     public static int amount = 2;
     
     AbstractCreature p = AbstractDungeon.player;
