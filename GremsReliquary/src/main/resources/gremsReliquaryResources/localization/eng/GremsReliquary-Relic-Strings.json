@@ -44,6 +44,15 @@
       "Whenever you add any card into your deck, Upgrade it. NL Whenever you enter a Rest Site, replace a random Upgraded card in your deck with a Strike or Defend, at random."
     ]
   },
+  "gremsReliquary:Curseberry": {
+    "NAME": "Curseberry",
+    "FLAVOR": "It's the most delicious thing you have ever tasted.",
+    "DESCRIPTIONS": [
+      "Raise your max HP by #b",
+      " Whenever you enter an Elite room, lose #r",
+      " max HP."
+    ]
+  },
   "gremsReliquary:test": {
     "NAME": "test",
     "FLAVOR": "test",

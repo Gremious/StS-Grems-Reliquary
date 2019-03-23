@@ -18,7 +18,7 @@ public class Placeholder extends AbstractGremRelic {
     public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/Placeholder.png");
     
     public Placeholder() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.NORMAL, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.RARE, RelicType.NORMAL, LandingSound.CLINK);
     }
     
     // Description
