@@ -1,5 +1,6 @@
 package gremsReliquary.relics.normal;
 
+import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
@@ -13,16 +14,17 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orichalcum;
 import gremsReliquary.GremsReliquary;
+import gremsReliquary.patches.OrichalcumMythrilSynergyPatch;
 import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
 
-public class Mithril extends AbstractGremRelic implements OnLoseTempHpRelic {
+public class Mithril extends AbstractGremRelic implements OnLoseTempHpRelic, CustomSavable<Boolean> {
     public static final String ID = GremsReliquary.makeID(Mithril.class.getSimpleName());
     public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png");
     public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
     
     AbstractCreature p = AbstractDungeon.player;
-    
+    public static boolean spireFieldSave;
     private static final int TEMP_HP = 4;
     private static final int ORI_THORNS = 3;
     public boolean trigger = false;
@@ -82,6 +84,8 @@ public class Mithril extends AbstractGremRelic implements OnLoseTempHpRelic {
             o.tips.clear();
             o.description = DESCRIPTIONS[7] + ORI_THORNS + DESCRIPTIONS[8];
             o.tips.add(new PowerTip(DESCRIPTIONS[9], DESCRIPTIONS[7] + ORI_THORNS + DESCRIPTIONS[8]));
+            
+            OrichalcumMythrilSynergyPatch.OriBrokenField.broken.set(o, true);
         }
     }
     
@@ -89,5 +93,17 @@ public class Mithril extends AbstractGremRelic implements OnLoseTempHpRelic {
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0] + TEMP_HP + DESCRIPTIONS[1];
+    }
+    
+    @Override
+    public Boolean onSave() {
+        spireFieldSave = OrichalcumMythrilSynergyPatch.OriBrokenField.broken.get(AbstractDungeon.player.getRelic(Orichalcum.ID));
+        return spireFieldSave;
+    }
+    
+    @Override
+    public void onLoad(Boolean brokenField) {
+        
+        OrichalcumMythrilSynergyPatch.OriBrokenField.broken.set(AbstractDungeon.player.getRelic(Mithril.ID), brokenField);
     }
 }

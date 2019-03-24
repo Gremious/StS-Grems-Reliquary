@@ -2,7 +2,7 @@
   "modid": "gremsreliquary",
   "name": "Grem's Reliquary",
   "author_list": ["Gremious"],
-  "description": "A mod that adds any nice relic ideas I have.",
+  "description": "A mod that adds any nice relic ideas I have. I have mod configs btw.",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",

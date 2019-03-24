@@ -30,36 +30,40 @@ public class PlaceholderRelicEffect extends AbstractGameEffect {
     }
     
     public void update() {
-        if (waitDuration > 0) {
-            if (relicInstance instanceof CustomSavable
-                    || relicInstance.relicId.equals(BottledFlame.ID)
-                    || relicInstance.relicId.equals(BottledLightning.ID)
-                    || relicInstance.relicId.equals(BottledTornado.ID)) {
-                tickWaitDuration();
+        if (!(relicInstance instanceof Placeholder)) {
+            if (waitDuration > 0) {
+                if (relicInstance instanceof CustomSavable
+                        || relicInstance.relicId.equals(BottledFlame.ID)
+                        || relicInstance.relicId.equals(BottledLightning.ID)
+                        || relicInstance.relicId.equals(BottledTornado.ID)) {
+                    tickWaitDuration();
+                } else {
+                    waitDuration = -0.1f;
+                }
             } else {
-                waitDuration = -0.1f;
+                if (duration == Settings.ACTION_DUR_FAST) {
+                    if (debug) logger.info("Update start: " + l);
+                    if (AbstractDungeon.player.hasRelic(Placeholder.ID)
+                            && !AbstractDungeon.isScreenUp
+                            && AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()
+                            && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.INCOMPLETE) {
+                        if (debug) logger.info(l++);
+                        AbstractDungeon.player.getRelic(Placeholder.ID).flash();
+                        if (debug) logger.info(l++);
+                        CardCrawlGame.sound.play("AUTOMATON_ORB_SPAWN");
+                        if (debug) logger.info(l++);
+                        AbstractDungeon.player.loseRelic(Placeholder.ID);
+                        if (debug) logger.info(l++);
+                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relicInstance.makeCopy());
+                        if (debug) logger.info(l++);
+                        if (debug) logger.info("It's done.");
+                        isDone = true;
+                    }
+                    if (debug) logger.info("Tick Tock");
+                }
             }
         } else {
-            if (duration == Settings.ACTION_DUR_FAST) {
-                if (debug) logger.info("Update start: " + l);
-                if (AbstractDungeon.player.hasRelic(Placeholder.ID)
-                        && !AbstractDungeon.isScreenUp
-                        && AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()
-                        && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.INCOMPLETE) {
-                    if (debug) logger.info(l++);
-                    AbstractDungeon.player.getRelic(Placeholder.ID).flash();
-                    if (debug) logger.info(l++);
-                    CardCrawlGame.sound.play("AUTOMATON_ORB_SPAWN");
-                    if (debug) logger.info(l++);
-                    AbstractDungeon.player.loseRelic(Placeholder.ID);
-                    if (debug) logger.info(l++);
-                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relicInstance.makeCopy());
-                    if (debug) logger.info(l++);
-                    if (debug) logger.info("It's done.");
-                    isDone = true;
-                }
-                if (debug) logger.info("Tick Tock");
-            }
+            isDone = true;
         }
     }
     

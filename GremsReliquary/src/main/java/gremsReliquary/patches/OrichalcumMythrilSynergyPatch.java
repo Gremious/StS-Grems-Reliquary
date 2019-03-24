@@ -90,16 +90,13 @@ public class OrichalcumMythrilSynergyPatch {
         public static void Raw(CtBehavior ctMethodToPatch) throws CannotCompileException {
             CtClass ctClass = ctMethodToPatch.getDeclaringClass();
             ClassPool pool = ctClass.getClassPool();
-            
             CtMethod method = CtNewMethod.make(
                     "public void atBattleStart() {"
                             + AbstractPlayer.class.getName() + " p = " + AbstractDungeon.class.getName() + ".player; "
                             + AbstractDungeon.class.getName() + ".actionManager.addToBottom(new " + ApplyPowerAction.class.getName() + "(p, p, new " + ThornsPower.class.getName() + "(p, 3), 3)); "
-                            + AbstractDungeon.class.getName() + ".actionManager.addToTop(new " + RelicAboveCreatureAction.class.getName() + "(p, new " + Orichalcum.class.getName() + "())); "
-                            + " p.getRelic(" + Orichalcum.class.getName() + ".ID).getUpdatedDescription();} "
-                            + " p.getRelic(" + Orichalcum.class.getName() + ".ID).stopPulse();   } "
-                            + " if (p.hasRelic(" + Mithril.class.getName() + ".ID)) { p.getRelic(" + Mithril.class.getName() + ".ID).changeOri(); "
-                            + OriBrokenField.class.getName() + ".broken.set(this, true)}",
+                            + AbstractDungeon.class.getName() + ".actionManager.addToTop(new " + RelicAboveCreatureAction.class.getName() + "(p, this)); "
+                            + " this.stopPulse(); "
+                            + " if (p.hasRelic(" + Mithril.class.getName() + ".ID)) {((" + Mithril.class.getName() + ") p.getRelic(" + Mithril.class.getName() + ".ID)).changeOri(); }}",
                     ctClass
             );
             logger.info("I'm curious. Simple: " + AbstractPlayer.class.getSimpleName());
@@ -109,4 +106,16 @@ public class OrichalcumMythrilSynergyPatch {
             ctClass.addMethod(method);
         }
     }
+    /*
+    CtMethod method = CtNewMethod.make(
+            "public void atBattleStart() {"
+                    + AbstractPlayer.class.getName() + " p = " + AbstractDungeon.class.getName() + ".player; "
+                    + AbstractDungeon.class.getName() + ".actionManager.addToBottom(new " + ApplyPowerAction.class.getName() + "(p, p, new " + ThornsPower.class.getName() + "(p, 3), 3)); "
+                    + AbstractDungeon.class.getName() + ".actionManager.addToTop(new " + RelicAboveCreatureAction.class.getName() + "(p, new " + Orichalcum.class.getName() + "())); "
+                    + " p.getRelic(" + Orichalcum.class.getName() + ".ID).getUpdatedDescription();} "
+                    + " p.getRelic(" + Orichalcum.class.getName() + ".ID).stopPulse();   } "
+                    + " if (p.hasRelic(" + Mithril.class.getName() + ".ID)) { p.getRelic(" + Mithril.class.getName() + ".ID).changeOri(); "
+                    + OriBrokenField.class.getName() + ".broken.set(this, true)}",
+            ctClass
+    );*/
 }
