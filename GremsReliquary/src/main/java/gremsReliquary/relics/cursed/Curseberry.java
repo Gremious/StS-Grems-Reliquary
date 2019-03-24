@@ -14,12 +14,12 @@ public class Curseberry extends AbstractGremRelic {
     public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/Curseberry.png");
     public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/Curseberry.png");
     public static int amount = 15;
-    public static int loseAmount = 4;
+    public static int loseAmount = 6;
     
     AbstractCreature p = AbstractDungeon.player;
     
     public Curseberry() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.CURSED, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, RelicType.CURSED, LandingSound.FLAT);
     }
     
     @Override

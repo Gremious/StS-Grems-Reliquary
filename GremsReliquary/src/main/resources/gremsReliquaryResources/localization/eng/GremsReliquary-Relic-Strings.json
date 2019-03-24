@@ -53,6 +53,22 @@
       " max HP."
     ]
   },
+  "gremsReliquary:Mithril": {
+    "NAME": "Mithril",
+    "FLAVOR": "An orange tinted metal, unlike any ever seen. Perhaps the only thing that can destroy Orichalcum.",
+    "DESCRIPTIONS": [
+      "If you end your turn without #yTemporary #yHP, gain #b",
+      " #yTemporary #yHP.",
+      "Synergy - The Experiment:",
+      "If you have ",
+      " it no longer gives you #yBlock. Instead, You gain #b",
+      " #yThorns at the start of each combat.",
+      "A broken metal. Not as indestructible as previously thought.",
+      "A the start of each combat, gain #b",
+      " Thorns",
+      "Orichalcum Shards"
+    ]
+  },
   "gremsReliquary:test": {
     "NAME": "test",
     "FLAVOR": "test",

@@ -21,11 +21,13 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.Orichalcum;
 import gremsReliquary.effects.utility.PlaceholderRelicEffect;
 import gremsReliquary.relics.cursed.CursedBottle;
 import gremsReliquary.relics.cursed.CursedEgg;
 import gremsReliquary.relics.cursed.UnbalancedScales;
 import gremsReliquary.relics.normal.BrokenMirror;
+import gremsReliquary.relics.normal.Mithril;
 import gremsReliquary.relics.normal.Placeholder;
 import gremsReliquary.relics.normal.TimeIsMoney;
 import gremsReliquary.util.TextureLoader;
@@ -202,6 +204,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new CursedBottle(), RelicType.SHARED);
             BaseMod.addRelic(new CursedEgg(), RelicType.SHARED);
             
+            
             /*
             UnlockTracker.markRelicAsSeen(UnbalancedScales.ID);
             UnlockTracker.markRelicAsSeen(CursedBottle.ID);
@@ -213,7 +216,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new TimeIsMoney(), RelicType.SHARED);
             BaseMod.addRelic(new BrokenMirror(), RelicType.SHARED);
             BaseMod.addRelic(new Placeholder(), RelicType.SHARED);
-            
+            BaseMod.addRelic(new Mithril(), RelicType.SHARED);
             //==
             /*
             UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
@@ -290,6 +293,13 @@ public class GremsReliquary implements
         if (AbstractDungeon.player.hasRelic(Placeholder.ID)) {
             AbstractDungeon.effectsQueue.add(AbstractDungeon.effectsQueue.size() - 1, new PlaceholderRelicEffect(abstractRelic));
         }
+        
+        if (AbstractDungeon.player.hasRelic(Mithril.ID)) {
+            if (AbstractDungeon.player.hasRelic(Orichalcum.ID)) {
+                AbstractDungeon.player.getRelic(Mithril.ID).onTrigger();
+            }
+        }
+        
     }
     
     // ====== NO EDIT AREA ======
