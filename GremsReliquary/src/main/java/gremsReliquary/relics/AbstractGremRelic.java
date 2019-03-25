@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import gremsReliquary.effects.visual.CursedRelicBorderGlow;
+import gremsReliquary.effects.visual.CursedRelicSparklies;
 import gremsReliquary.rewards.LinkedRewardItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,7 +35,9 @@ public class AbstractGremRelic extends CustomRelic {
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("gremsReliquary:RelicsUI");
     public static final String[] UI_STRINGS = uiStrings.TEXT;
     private ArrayList<CursedRelicBorderGlow> glowList = new ArrayList<>();
+    private ArrayList<CursedRelicSparklies> sparkleList = new ArrayList<>();
     private float glowTimer = 0.0F;
+    private float sparkleTimer = 0.0F;
     private int pulseCount = 0;
     
     private Field offsetXField;
@@ -113,6 +116,18 @@ public class AbstractGremRelic extends CustomRelic {
         }
     }
     
+    private void renderSparkles(SpriteBatch sb) {
+        if (!Settings.hideRelics) {
+            if (debug) logger.info("render sparkle log is on");
+            sb.setBlendFunction(770, 1);
+            for (AbstractGameEffect e : sparkleList) {
+                if (debug) logger.info("Triggered sparkle");
+                e.render(sb);
+            }
+            sb.setBlendFunction(770, 771);
+        }
+    }
+    
     private void updateGlow() {
         if (type.equals(RelicType.CURSED)) {
             glowTimer -= Gdx.graphics.getDeltaTime();
@@ -155,31 +170,68 @@ public class AbstractGremRelic extends CustomRelic {
         }
     }
     
+    private void updateSparkle() {
+        if (type.equals(RelicType.CURSED)) {
+            glowTimer -= Gdx.graphics.getDeltaTime();
+            float offsetX = 0.0f;
+            float rotation = 0.0f;
+            
+            try {
+                offsetX = offsetXField.getFloat(offsetXField);
+                rotation = offsetXField.getFloat(offsetXField);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            
+            if (sparkleTimer < 0.0F) {
+                sparkleList.add(new CursedRelicSparklies(this, outline, offsetX, rotation));
+                sparkleTimer = 0.5F;
+            }
+            
+            for (Iterator<CursedRelicSparklies> i = sparkleList.iterator(); i.hasNext(); ) {
+                CursedRelicSparklies e = (CursedRelicSparklies) i.next();
+                e.update();
+                if (e.isDone) {
+                    e.dispose();
+                    i.remove();
+                }
+            }
+        }
+    }
+    
     @Override
     public void renderInTopPanel(SpriteBatch sb) {
         updateGlow();
+        updateSparkle();
         renderGlow(sb);
+        renderSparkles(sb);
         super.renderInTopPanel(sb);
     }
     
     @Override
     public void render(SpriteBatch sb) {
         updateGlow();
+        updateSparkle();
         renderGlow(sb);
+        renderSparkles(sb);
         super.render(sb);
     }
     
     @Override
     public void render(SpriteBatch sb, boolean renderAmount, Color outlineColor) {
         updateGlow();
+        updateSparkle();
         renderGlow(sb);
+        renderSparkles(sb);
         super.render(sb, renderAmount, outlineColor);
     }
     
     @Override
     public void renderWithoutAmount(SpriteBatch sb, Color c) {
         updateGlow();
+        updateSparkle();
         renderGlow(sb);
+        renderSparkles(sb);
         super.renderWithoutAmount(sb, c);
     }
     

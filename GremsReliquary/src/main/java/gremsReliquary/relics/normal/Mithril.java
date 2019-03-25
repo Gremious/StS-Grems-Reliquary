@@ -20,8 +20,8 @@ import gremsReliquary.util.TextureLoader;
 
 public class Mithril extends AbstractGremRelic implements OnLoseTempHpRelic, CustomSavable<Boolean> {
     public static final String ID = GremsReliquary.makeID(Mithril.class.getSimpleName());
-    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png");
-    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/Mithril.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/Mithril.png");
     
     AbstractCreature p = AbstractDungeon.player;
     public static boolean spireFieldSave;
