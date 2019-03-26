@@ -47,7 +47,7 @@ public class GremsReliquary implements
         PostInitializeSubscriber
         , RelicGetSubscriber {
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
-    public static boolean debug = false;
+    public static boolean debug = true;
     
     public static final boolean hasHalation;
     

@@ -172,7 +172,7 @@ public class AbstractGremRelic extends CustomRelic {
     
     private void updateSparkle() {
         if (type.equals(RelicType.CURSED)) {
-            glowTimer -= Gdx.graphics.getDeltaTime();
+            sparkleTimer -= Gdx.graphics.getDeltaTime();
             float offsetX = 0.0f;
             float rotation = 0.0f;
             
@@ -184,8 +184,8 @@ public class AbstractGremRelic extends CustomRelic {
             }
             
             if (sparkleTimer < 0.0F) {
-                sparkleList.add(new CursedRelicSparklies(this, outline, offsetX, rotation));
-                sparkleTimer = 0.5F;
+                sparkleList.add(new CursedRelicSparklies(this, offsetX, rotation));
+                sparkleTimer = 2.0F;
             }
             
             for (Iterator<CursedRelicSparklies> i = sparkleList.iterator(); i.hasNext(); ) {
@@ -202,8 +202,8 @@ public class AbstractGremRelic extends CustomRelic {
     @Override
     public void renderInTopPanel(SpriteBatch sb) {
         updateGlow();
-        updateSparkle();
         renderGlow(sb);
+        updateSparkle();
         renderSparkles(sb);
         super.renderInTopPanel(sb);
     }
@@ -211,8 +211,8 @@ public class AbstractGremRelic extends CustomRelic {
     @Override
     public void render(SpriteBatch sb) {
         updateGlow();
-        updateSparkle();
         renderGlow(sb);
+        updateSparkle();
         renderSparkles(sb);
         super.render(sb);
     }
@@ -220,8 +220,8 @@ public class AbstractGremRelic extends CustomRelic {
     @Override
     public void render(SpriteBatch sb, boolean renderAmount, Color outlineColor) {
         updateGlow();
-        updateSparkle();
         renderGlow(sb);
+        updateSparkle();
         renderSparkles(sb);
         super.render(sb, renderAmount, outlineColor);
     }
@@ -229,8 +229,8 @@ public class AbstractGremRelic extends CustomRelic {
     @Override
     public void renderWithoutAmount(SpriteBatch sb, Color c) {
         updateGlow();
-        updateSparkle();
         renderGlow(sb);
+        updateSparkle();
         renderSparkles(sb);
         super.renderWithoutAmount(sb, c);
     }
