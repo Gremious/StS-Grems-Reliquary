@@ -11,6 +11,8 @@ import gremsReliquary.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Random;
+
 import static gremsReliquary.GremsReliquary.debug;
 
 public class CursedRelicSparklies extends AbstractGremEffect {
@@ -26,7 +28,10 @@ public class CursedRelicSparklies extends AbstractGremEffect {
         this.relic = relic;
         this.img = TextureLoader.getTexture("gremsReliquaryResources/images/particles/Single.png");
         this.duration = 1.0f;
-        this.color = Color.BLACK.cpy();
+        
+        Random rand = new Random();
+        this.color = rand.nextInt(2) == 0 ? Color.PURPLE.cpy() : Color.VIOLET.cpy();
+        
         this.offsetX = offsetX;
         this.rotation = rotation;
     }
@@ -35,7 +40,7 @@ public class CursedRelicSparklies extends AbstractGremEffect {
     public void update() {
         if (debug) logger.info(CursedRelicSparklies.class.getSimpleName() + " Update log started");
         //scale = duration;
-        scale = (Interpolation.bounceOut.apply(0.5f, 1.5F, (MAX_DURATION - duration) / MAX_DURATION)) * relic.scale * Settings.scale;
+        scale = 0.7f * Settings.scale;
         color.a = (Interpolation.pow2Out.apply(0.0f, 1.0F, (MAX_DURATION - duration) / MAX_DURATION));
         
         tickDuration();
@@ -46,6 +51,6 @@ public class CursedRelicSparklies extends AbstractGremEffect {
         if (debug) logger.info(CursedRelicSparklies.class.getSimpleName() + " render log started");
         
         sb.setColor(color);
-        sb.draw(img, relic.currentX + offsetX, relic.currentY, 64.0F, 64.0F, 128.0F, 128.0F, scale, scale, rotation, 0, 0, 128, 128, false, false);
+        sb.draw(img, relic.currentX - 64.0F + offsetX, relic.currentY - 64.0F, 64.0F, 64.0F, 128.0F, 128.0F, scale, scale, rotation, 0, 0, 128, 128, false, false);
     }
 }
