@@ -12,7 +12,7 @@ public class AbstractGremEffect extends AbstractGameEffect {
     }
     
     public void tickDuration() {
-        this.duration -= Gdx.graphics.getDeltaTime(); //tickDuration();
+        this.duration -= Gdx.graphics.getDeltaTime();
         if (duration < 0.0F) {
             isDone = true;
             duration = 0.0F;

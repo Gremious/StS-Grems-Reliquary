@@ -105,14 +105,16 @@ public class AbstractGremRelic extends CustomRelic {
     //==
     
     private void renderGlow(SpriteBatch sb) {
-        if (!Settings.hideRelics) {
-            if (debug) logger.info("render Glow log is on");
-            sb.setBlendFunction(770, 1);
-            for (CursedRelicBorderGlow e : glowList) {
-                if (debug) logger.info("Triggered glow");
-                e.render(sb);
+        if (type.equals(RelicType.CURSED)) {
+            if (!Settings.hideRelics) {
+             //   if (debug) logger.info("render Glow log is on");
+                sb.setBlendFunction(770, 1);
+                for (CursedRelicBorderGlow e : glowList) {
+             //       if (debug) logger.info("Triggered glow");
+                    e.render(sb);
+                }
+                sb.setBlendFunction(770, 771);
             }
-            sb.setBlendFunction(770, 771);
         }
     }
     
@@ -131,7 +133,7 @@ public class AbstractGremRelic extends CustomRelic {
             
             if (glowTimer < 0.0F) {
                 glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
-                glowTimer = 2.5F;
+                glowTimer = 2.0F;
             }
             
             /*
@@ -149,7 +151,7 @@ public class AbstractGremRelic extends CustomRelic {
             */
             
             for (Iterator<CursedRelicBorderGlow> i = glowList.iterator(); i.hasNext(); ) {
-                CursedRelicBorderGlow e = (CursedRelicBorderGlow) i.next();
+                CursedRelicBorderGlow e = i.next();
                 e.update();
                 if (e.isDone) {
                     e.dispose();
@@ -161,10 +163,10 @@ public class AbstractGremRelic extends CustomRelic {
     
     private void renderSparkles(SpriteBatch sb) {
         if (!Settings.hideRelics) {
-            if (debug) logger.info("render sparkle log is on");
+         //   if (debug) logger.info("render sparkle log is on");
             sb.setBlendFunction(770, 1);
             for (AbstractGameEffect e : sparkleList) {
-                if (debug) logger.info("Triggered sparkle");
+        //        if (debug) logger.info("Triggered sparkle");
                 e.render(sb);
             }
             sb.setBlendFunction(770, 771);

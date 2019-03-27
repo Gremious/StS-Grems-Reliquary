@@ -29,13 +29,15 @@ public class CursedRelicBorderGlow extends AbstractGremEffect {
         
         this.offsetX = offsetX;
         this.rotation = rotation;
+        if (debug) logger.info("Created glow: " + this.hashCode());
     }
     
     @Override
     public void update() {
-        //   if (debug) logger.info(CursedRelicBorderGlow.class.getSimpleName() + " Update log started");
-        //  if (debug) logger.info("Duration is: " + duration);
-        scale = (Interpolation.pow2Out.apply(1.0f, 1.15F, MAX_DURATION - duration)) * relic.scale * Settings.scale;
+       // if (debug) logger.info(CursedRelicBorderGlow.class.getSimpleName() + " Update log started");
+       // if (debug) logger.info("Duration is: " + duration);
+        // scale = (Interpolation.pow2Out.apply(1.0f, 1.15F, (MAX_DURATION - duration) / duration)) * relic.scale * Settings.scale; - super cool full-screen wave thingy
+        scale = (Interpolation.pow2Out.apply(0.0f, 1.15F, (MAX_DURATION - duration) / MAX_DURATION)) * relic.scale * Settings.scale;
         
         color.a = duration / 1.5F;
         
@@ -44,7 +46,7 @@ public class CursedRelicBorderGlow extends AbstractGremEffect {
     
     @Override
     public void render(SpriteBatch sb) {
-        if (debug) logger.info(CursedRelicBorderGlow.class.getSimpleName() + " render log started");
+      //  if (debug) logger.info(CursedRelicBorderGlow.class.getSimpleName() + " render log started");
         sb.setColor(color);
         
         sb.draw(img, relic.currentX - 64.0F + offsetX, relic.currentY - 64.0F, 64.0F, 64.0F, 128.0F, 128.0F, scale, scale, rotation, 0, 0, 128, 128, false, false);
