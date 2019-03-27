@@ -21,6 +21,5 @@ public class AbstractGremEffect extends AbstractGameEffect {
     
     @Override
     public void dispose() {
-    
     }
 }

@@ -107,10 +107,10 @@ public class AbstractGremRelic extends CustomRelic {
     private void renderGlow(SpriteBatch sb) {
         if (type.equals(RelicType.CURSED)) {
             if (!Settings.hideRelics) {
-             //   if (debug) logger.info("render Glow log is on");
+                //   if (debug) logger.info("render Glow log is on");
                 sb.setBlendFunction(770, 1);
                 for (CursedRelicBorderGlow e : glowList) {
-             //       if (debug) logger.info("Triggered glow");
+                    //       if (debug) logger.info("Triggered glow");
                     e.render(sb);
                 }
                 sb.setBlendFunction(770, 771);
@@ -133,7 +133,7 @@ public class AbstractGremRelic extends CustomRelic {
             
             if (glowTimer < 0.0F) {
                 glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
-                glowTimer = 2.0F;
+                glowTimer = 3.0F;
             }
             
             /*
@@ -152,8 +152,10 @@ public class AbstractGremRelic extends CustomRelic {
             
             for (Iterator<CursedRelicBorderGlow> i = glowList.iterator(); i.hasNext(); ) {
                 CursedRelicBorderGlow e = i.next();
+                if (debug) logger.info("gonna update " + e.hashCode());
                 e.update();
                 if (e.isDone) {
+                    logger.info(e.hashCode() + " is totally done we gonna remove");
                     e.dispose();
                     i.remove();
                 }
@@ -163,10 +165,10 @@ public class AbstractGremRelic extends CustomRelic {
     
     private void renderSparkles(SpriteBatch sb) {
         if (!Settings.hideRelics) {
-         //   if (debug) logger.info("render sparkle log is on");
+            //   if (debug) logger.info("render sparkle log is on");
             sb.setBlendFunction(770, 1);
             for (AbstractGameEffect e : sparkleList) {
-        //        if (debug) logger.info("Triggered sparkle");
+                //        if (debug) logger.info("Triggered sparkle");
                 e.render(sb);
             }
             sb.setBlendFunction(770, 771);
@@ -187,8 +189,8 @@ public class AbstractGremRelic extends CustomRelic {
             }
             
             if (sparkleTimer < 0.0F) {
-                //    sparkleList.add(new CursedRelicSparklies(this, offsetX, rotation));
-                //   sparkleTimer = 2.0F;
+                sparkleList.add(new CursedRelicSparklies(this, offsetX, rotation));
+                sparkleTimer = 2.0F;
             }
             
             for (Iterator<CursedRelicSparklies> i = sparkleList.iterator(); i.hasNext(); ) {
@@ -206,8 +208,8 @@ public class AbstractGremRelic extends CustomRelic {
     public void renderInTopPanel(SpriteBatch sb) {
         updateGlow();
         renderGlow(sb);
-        updateSparkle();
-        renderSparkles(sb);
+        //        updateSparkle();
+        //        renderSparkles(sb);
         super.renderInTopPanel(sb);
     }
     
@@ -215,8 +217,8 @@ public class AbstractGremRelic extends CustomRelic {
     public void render(SpriteBatch sb) {
         updateGlow();
         renderGlow(sb);
-        renderSparkles(sb);
-        updateSparkle();
+        //        renderSparkles(sb);
+        //        updateSparkle();
         super.render(sb);
     }
     
@@ -224,8 +226,8 @@ public class AbstractGremRelic extends CustomRelic {
     public void render(SpriteBatch sb, boolean renderAmount, Color outlineColor) {
         updateGlow();
         renderGlow(sb);
-        renderSparkles(sb);
-        updateSparkle();
+        //        renderSparkles(sb);
+        //        updateSparkle();
         super.render(sb, renderAmount, outlineColor);
     }
     
@@ -233,8 +235,8 @@ public class AbstractGremRelic extends CustomRelic {
     public void renderWithoutAmount(SpriteBatch sb, Color c) {
         updateGlow();
         renderGlow(sb);
-        renderSparkles(sb);
-        updateSparkle();
+        //        renderSparkles(sb);
+        //        updateSparkle();
         super.renderWithoutAmount(sb, c);
     }
     
