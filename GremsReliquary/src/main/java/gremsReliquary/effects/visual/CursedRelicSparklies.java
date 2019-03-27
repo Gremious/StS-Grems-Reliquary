@@ -26,6 +26,7 @@ public class CursedRelicSparklies extends AbstractGremEffect {
     
     public CursedRelicSparklies(AbstractRelic relic, float offsetX, float rotation) {
         this.relic = relic;
+       // this.img = TextureLoader.getTexture("gremsReliquaryResources/images/particles/Single.png");
         this.img = TextureLoader.getTexture("gremsReliquaryResources/images/particles/Single.png");
         this.duration = 1.0f;
         
@@ -40,7 +41,7 @@ public class CursedRelicSparklies extends AbstractGremEffect {
     public void update() {
         if (debug) logger.info(CursedRelicSparklies.class.getSimpleName() + " Update log started");
         //scale = duration;
-        scale = 0.7f * Settings.scale;
+        scale = 0.3f * Settings.scale;
         color.a = (Interpolation.pow2Out.apply(0.0f, 1.0F, (MAX_DURATION - duration) / MAX_DURATION));
         
         tickDuration();

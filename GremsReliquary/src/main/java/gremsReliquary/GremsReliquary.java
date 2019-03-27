@@ -24,13 +24,8 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orichalcum;
 import gremsReliquary.effects.utility.PlaceholderRelicEffect;
-import gremsReliquary.relics.cursed.CursedBottle;
-import gremsReliquary.relics.cursed.CursedEgg;
-import gremsReliquary.relics.cursed.UnbalancedScales;
-import gremsReliquary.relics.normal.BrokenMirror;
-import gremsReliquary.relics.normal.Mithril;
-import gremsReliquary.relics.normal.Placeholder;
-import gremsReliquary.relics.normal.TimeIsMoney;
+import gremsReliquary.relics.cursed.*;
+import gremsReliquary.relics.normal.*;
 import gremsReliquary.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -227,12 +222,14 @@ public class GremsReliquary implements
             BaseMod.addRelic(new UnbalancedScales(), RelicType.SHARED);
             BaseMod.addRelic(new CursedBottle(), RelicType.SHARED);
             BaseMod.addRelic(new CursedEgg(), RelicType.SHARED);
+            BaseMod.addRelic(new BorkenRecord(), RelicType.SHARED);
             
             
             /*
             UnlockTracker.markRelicAsSeen(UnbalancedScales.ID);
             UnlockTracker.markRelicAsSeen(CursedBottle.ID);
             UnlockTracker.markRelicAsSeen(CursedEgg.ID);
+            UnlockTracker.markRelicAsSeen(BorkenRecord.ID);
             */
         }
         

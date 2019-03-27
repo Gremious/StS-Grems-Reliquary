@@ -35,7 +35,7 @@ public class CursedRelicBorderGlow extends AbstractGremEffect {
     public void update() {
         //   if (debug) logger.info(CursedRelicBorderGlow.class.getSimpleName() + " Update log started");
         //  if (debug) logger.info("Duration is: " + duration);
-        scale = (Interpolation.pow2Out.apply(1.0f, 1.15F, (MAX_DURATION - duration) / MAX_DURATION)) * relic.scale * Settings.scale;
+        scale = (Interpolation.pow2Out.apply(1.0f, 1.15F, MAX_DURATION - duration)) * relic.scale * Settings.scale;
         
         color.a = duration / 1.5F;
         

@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
@@ -117,18 +116,6 @@ public class AbstractGremRelic extends CustomRelic {
         }
     }
     
-    private void renderSparkles(SpriteBatch sb) {
-        if (!Settings.hideRelics) {
-            if (debug) logger.info("render sparkle log is on");
-            sb.setBlendFunction(770, 1);
-            for (AbstractGameEffect e : sparkleList) {
-                if (debug) logger.info("Triggered sparkle");
-                e.render(sb);
-            }
-            sb.setBlendFunction(770, 771);
-        }
-    }
-    
     private void updateGlow() {
         if (type.equals(RelicType.CURSED)) {
             glowTimer -= Gdx.graphics.getDeltaTime();
@@ -171,6 +158,18 @@ public class AbstractGremRelic extends CustomRelic {
         }
     }
     
+    private void renderSparkles(SpriteBatch sb) {
+        if (!Settings.hideRelics) {
+            if (debug) logger.info("render sparkle log is on");
+            sb.setBlendFunction(770, 1);
+            for (AbstractGameEffect e : sparkleList) {
+                if (debug) logger.info("Triggered sparkle");
+                e.render(sb);
+            }
+            sb.setBlendFunction(770, 771);
+        }
+    }
+    
     private void updateSparkle() {
         if (type.equals(RelicType.CURSED)) {
             sparkleTimer -= Gdx.graphics.getDeltaTime();
@@ -185,8 +184,8 @@ public class AbstractGremRelic extends CustomRelic {
             }
             
             if (sparkleTimer < 0.0F) {
-                sparkleList.add(new CursedRelicSparklies(this, offsetX, rotation));
-                sparkleTimer = 2.0F;
+                //    sparkleList.add(new CursedRelicSparklies(this, offsetX, rotation));
+                //   sparkleTimer = 2.0F;
             }
             
             for (Iterator<CursedRelicSparklies> i = sparkleList.iterator(); i.hasNext(); ) {
