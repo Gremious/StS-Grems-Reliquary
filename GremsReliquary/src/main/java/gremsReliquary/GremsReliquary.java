@@ -222,14 +222,14 @@ public class GremsReliquary implements
             BaseMod.addRelic(new UnbalancedScales(), RelicType.SHARED);
             BaseMod.addRelic(new CursedBottle(), RelicType.SHARED);
             BaseMod.addRelic(new CursedEgg(), RelicType.SHARED);
-            BaseMod.addRelic(new BorkenRecord(), RelicType.SHARED);
+            BaseMod.addRelic(new BrokenRecord(), RelicType.SHARED);
             
             
             /*
             UnlockTracker.markRelicAsSeen(UnbalancedScales.ID);
             UnlockTracker.markRelicAsSeen(CursedBottle.ID);
             UnlockTracker.markRelicAsSeen(CursedEgg.ID);
-            UnlockTracker.markRelicAsSeen(BorkenRecord.ID);
+            UnlockTracker.markRelicAsSeen(BrokenRecord.ID);
             */
         }
         

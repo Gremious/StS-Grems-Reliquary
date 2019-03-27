@@ -55,7 +55,7 @@
   },
   "gremsReliquary:Mithril": {
     "NAME": "Mithril",
-    "FLAVOR": "An orange tinted metal, unlike any ever seen. Perhaps the only thing that can destroy Orichalcum.",
+    "FLAVOR": "An orange tinted metal, unlike any ever seen. Perhaps the only thing that can destroy Orichalcum?",
     "DESCRIPTIONS": [
       "If you end your turn without #yTemporary #yHP, gain #b",
       " #yTemporary #yHP.",
@@ -67,6 +67,13 @@
       "A the start of each combat, gain #b",
       " Thorns",
       "Orichalcum Shards"
+    ]
+  },
+  "gremsReliquary:BrokenRecord": {
+    "NAME": "Broken Record",
+    "FLAVOR": "Shattered by someone before you. One only wonders why.",
+    "DESCRIPTIONS": [
+      "The first non-starter card you play each combat is played twice and Exhausts."
     ]
   },
   "gremsReliquary:test": {

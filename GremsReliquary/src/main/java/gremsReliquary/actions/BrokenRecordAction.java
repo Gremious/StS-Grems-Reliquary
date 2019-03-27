@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class BrokenRecordAction extends AbstractGameAction {
     AbstractCard card;
@@ -22,25 +21,29 @@ public class BrokenRecordAction extends AbstractGameAction {
     
     @Override
     public void update() {
-        if (!card.purgeOnUse) {
-            AbstractMonster m = null;
-            if (useCardAction.target != null) {
-                m = (AbstractMonster) useCardAction.target;
+        if (duration == Settings.ACTION_DUR_FAST) {
+            if (!card.purgeOnUse) {
+                AbstractMonster m = null;
+                if (useCardAction.target != null) {
+                    m = (AbstractMonster) useCardAction.target;
+                }
+                
+                AbstractCard tmp = card.makeSameInstanceOf();
+                AbstractDungeon.player.limbo.addToBottom(tmp);
+                tmp.current_x = card.current_x;
+                tmp.current_y = card.current_y;
+                tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
+                tmp.target_y = (float) Settings.HEIGHT / 2.0F;
+                tmp.freeToPlayOnce = true;
+                if (m != null) {
+                    tmp.calculateCardDamage(m);
+                }
+                
+                tmp.purgeOnUse = true;
+                AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tmp, m, card.energyOnUse));
             }
-            
-            AbstractCard tmp = card.makeSameInstanceOf();
-            AbstractDungeon.player.limbo.addToBottom(tmp);
-            tmp.current_x = card.current_x;
-            tmp.current_y = card.current_y;
-            tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
-            tmp.target_y = (float) Settings.HEIGHT / 2.0F;
-            tmp.freeToPlayOnce = true;
-            if (m != null) {
-                tmp.calculateCardDamage(m);
-            }
-            
-            tmp.purgeOnUse = true;
-            AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tmp, m, card.energyOnUse));
+            tickDuration();
         }
+        tickDuration();
     }
 }
