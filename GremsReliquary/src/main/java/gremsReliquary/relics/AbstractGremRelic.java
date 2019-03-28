@@ -25,8 +25,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static gremsReliquary.GremsReliquary.debug;
-
 public class AbstractGremRelic extends CustomRelic {
     private static final Logger logger = LogManager.getLogger(AbstractGremRelic.class.getName());
     
@@ -133,7 +131,7 @@ public class AbstractGremRelic extends CustomRelic {
             
             if (glowTimer < 0.0F) {
                 glowList.add(new CursedRelicBorderGlow(this, outline, offsetX, rotation));
-                glowTimer = 3.0F;
+                glowTimer = 2.5F;
             }
             
             /*
@@ -152,10 +150,10 @@ public class AbstractGremRelic extends CustomRelic {
             
             for (Iterator<CursedRelicBorderGlow> i = glowList.iterator(); i.hasNext(); ) {
                 CursedRelicBorderGlow e = i.next();
-                if (debug) logger.info("gonna update " + e.hashCode());
+                //                if (debug) logger.info("gonna update " + e.hashCode());
                 e.update();
                 if (e.isDone) {
-                    logger.info(e.hashCode() + " is totally done we gonna remove");
+                    //                    if (debug) logger.info(e.hashCode() + " is totally done we gonna remove");
                     e.dispose();
                     i.remove();
                 }

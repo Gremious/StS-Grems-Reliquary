@@ -42,7 +42,7 @@ public class CursedRelicSparklies extends AbstractGremEffect {
         if (debug) logger.info(CursedRelicSparklies.class.getSimpleName() + " Update log started");
         //scale = duration;
         scale = 0.3f * Settings.scale;
-        color.a = (Interpolation.pow2Out.apply(0.0f, 1.0F, (MAX_DURATION - duration) / MAX_DURATION));
+        color.a = (Interpolation.pow2Out.apply(1.0f, 0.0F, (MAX_DURATION - duration) / MAX_DURATION));
         
         tickDuration();
     }

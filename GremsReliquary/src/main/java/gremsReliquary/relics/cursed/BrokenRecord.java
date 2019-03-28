@@ -23,7 +23,7 @@ public class BrokenRecord extends AbstractGremRelic {
     private CardGroup starterCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
     
     public BrokenRecord() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.CURSED, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.CURSED, LandingSound.FLAT);
     }
     
     @Override

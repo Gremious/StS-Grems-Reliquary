@@ -39,7 +39,7 @@ public class CursedRelicBorderGlow extends AbstractGremEffect {
         // scale = (Interpolation.pow2Out.apply(1.0f, 1.15F, (MAX_DURATION - duration) / duration)) * relic.scale * Settings.scale; - super cool full-screen wave thingy
         if (debug) logger.info("Scale is:" + scale);
         scale = (Interpolation.pow2Out.apply(1.0f, 1.15F, (MAX_DURATION - duration) / MAX_DURATION)) * relic.scale * Settings.scale;
-        color.a = duration / 1.5F;
+        color.a = duration / MAX_DURATION;
         
         tickDuration();
     }
