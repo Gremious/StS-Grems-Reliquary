@@ -3,8 +3,8 @@
     "NAME": "Neows' Tentacle",
     "FLAVOR": "Where did this...come from?...",
     "DESCRIPTIONS": [
-      "Upon pickup, obtain a random #bNeow #bBlessing.",
-      "You have obtained: "
+      "Upon pickup, obtain a completely random #bNeow #bBlessing.",
+      "You have obtained: NL "
     ]
   },
   "gremsReliquary:TimeIsMoney": {
@@ -87,7 +87,7 @@
     "NAME": "Cursed Bottle",
     "FLAVOR": "You can put anything you want in here...but should you?",
     "DESCRIPTIONS": [
-      "Choose a card. At the start of each turn, if that card is in your draw or discard pile - draw it. NL At the end of each turn, shuffle a #pDecay into your draw pile.",
+      "Choose a card. At the start of each turn, if that card is in your draw or discard pile - draw it. NL At the end of each turn, shuffle a #pDecay into your Draw Pile.",
       "At the start of each turn, put ",
       " into your hand. NL At the end of each turn, shuffle a #pDecay into your discard pile.",
       "Select a card to bottle for "

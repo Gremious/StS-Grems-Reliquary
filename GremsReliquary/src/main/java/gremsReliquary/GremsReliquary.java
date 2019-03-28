@@ -23,8 +23,12 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orichalcum;
+import gremsReliquary.effects.utility.NeowTentacleEffect;
 import gremsReliquary.effects.utility.PlaceholderRelicEffect;
-import gremsReliquary.relics.cursed.*;
+import gremsReliquary.relics.cursed.BrokenRecord;
+import gremsReliquary.relics.cursed.CursedBottle;
+import gremsReliquary.relics.cursed.CursedEgg;
+import gremsReliquary.relics.cursed.UnbalancedScales;
 import gremsReliquary.relics.normal.*;
 import gremsReliquary.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
@@ -237,6 +241,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new TimeIsMoney(), RelicType.SHARED);
             BaseMod.addRelic(new BrokenMirror(), RelicType.SHARED);
             BaseMod.addRelic(new Mithril(), RelicType.SHARED);
+            BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
             //==
             /*
             UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
@@ -314,6 +319,7 @@ public class GremsReliquary implements
     
     @Override
     public void receiveRelicGet(AbstractRelic abstractRelic) {
+        
         if (AbstractDungeon.player.hasRelic(Placeholder.ID)) {
             AbstractDungeon.effectsQueue.add(AbstractDungeon.effectsQueue.size() - 1, new PlaceholderRelicEffect(abstractRelic));
         }
@@ -322,6 +328,9 @@ public class GremsReliquary implements
             if (AbstractDungeon.player.hasRelic(Orichalcum.ID)) {
                 AbstractDungeon.player.getRelic(Mithril.ID).onTrigger();
             }
+        }
+        
+        if (abstractRelic.relicId.equals(NeowsTentacle.ID)) {
         }
     }
     
