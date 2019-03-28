@@ -43,37 +43,6 @@ public class NeowTentacleEffect extends AbstractGremEffect {
         ((NeowsTentacle) relicInstance).setDescriptionAfterLoading2(neowReward.optionLabel);
         neowReward.activate();
         
-        /* lmao ignore all of this
-        try {
-            Method getDrawbacks = NeowReward.class.getDeclaredMethod("getRewardDrawbackOptions");
-            Method getRewards = NeowReward.class.getDeclaredMethod("getRewardOptions", int.class);
-            
-            getDrawbacks.setAccessible(true);
-            getRewards.setAccessible(true);
-            
-            drawbacks = ((ArrayList<NeowReward.NeowRewardDrawbackDef>) getDrawbacks.invoke(neowReward));
-            rewards = ((ArrayList<NeowReward.NeowRewardDef>) getRewards.invoke(neowReward, roll));
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        
-        if (debug)
-            rewards.forEach(NeowRewardDef -> logger.info("drawbacks: " + NeowRewardDef.type + " - " + NeowRewardDef.desc));
-        if (debug)
-            drawbacks.forEach(neowRewardDrawbackDef -> logger.info("drawbacks: " + neowRewardDrawbackDef.type + " - " + neowRewardDrawbackDef.desc));
-        
-        int rewardsRandom = AbstractDungeon.miscRng.random(drawbacks.size());
-        int drawbacksRandom = AbstractDungeon.miscRng.random(drawbacks.size());
-        
-        if (debug)
-            logger.info("The reward roll is: " + rewardsRandom + " so your reward is: " + rewards.get(rewardsRandom).desc);
-        if (debug)
-            logger.info("The drawbacks roll is: " + drawbacksRandom + " so your drawback is: " + drawbacks.get(drawbacksRandom).desc);
-        
-        ((NeowsTentacle) relicInstance).setDescriptionAfterLoading(rewards.get(rewardsRandom).desc, drawbacks.get(drawbacksRandom).desc);
-        
-        */
-        
         isDone = true;
     }
 }
