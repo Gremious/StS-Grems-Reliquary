@@ -21,9 +21,6 @@ public class NeowTentacleEffect extends AbstractGremEffect {
     private static final Logger logger = LogManager.getLogger(NeowTentacleEffect.class.getName());
     int roll = AbstractDungeon.relicRng.random(3);
     private AbstractRelic relicInstance;
-    private boolean openedGridScreen;
-    ArrayList<NeowReward.NeowRewardDrawbackDef> drawbacks = new ArrayList<>();
-    ArrayList<NeowReward.NeowRewardDef> rewards = new ArrayList<>();
 /*
     private boolean simulatedCheck;
     boolean simulated = false;
@@ -46,7 +43,7 @@ public class NeowTentacleEffect extends AbstractGremEffect {
         ((NeowsTentacle) relicInstance).setDescriptionAfterLoading2(neowReward.optionLabel);
         neowReward.activate();
         
-        /*
+        /* lmao ignore all of this
         try {
             Method getDrawbacks = NeowReward.class.getDeclaredMethod("getRewardDrawbackOptions");
             Method getRewards = NeowReward.class.getDeclaredMethod("getRewardOptions", int.class);

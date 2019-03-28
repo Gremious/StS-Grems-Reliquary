@@ -7,16 +7,19 @@ import gremsReliquary.GremsReliquary;
 import gremsReliquary.effects.utility.NeowTentacleEffect;
 import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static gremsReliquary.GremsReliquary.makeRelicOutlinePath;
 import static gremsReliquary.GremsReliquary.makeRelicPath;
 
 public class NeowsTentacle extends AbstractGremRelic {
-    
+    private static final Logger logger = LogManager.getLogger(NeowsTentacle.class.getName());
     public static final String ID = GremsReliquary.makeID(NeowsTentacle.class.getSimpleName());
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("NeowsTentacle.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("NeowsTentacle.png"));
     private boolean triggered = false;
+    int roll;
     
     public NeowsTentacle() {
         super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.NORMAL, LandingSound.MAGICAL);
@@ -28,7 +31,20 @@ public class NeowsTentacle extends AbstractGremRelic {
         
         if (!triggered) {
             flash();
-            AbstractDungeon.effectList.add(new NeowTentacleEffect(this));
+            logger.info("pls");
+            AbstractDungeon.effectsQueue.add(0, new NeowTentacleEffect(this));
+            logger.info("pls2 - added to effects queue");
+            
+            /*  This is for adding it as a non-effect but CME on obtain common relic which makes sense
+            NeowEvent.rng = new Random(Settings.seed);
+            roll = AbstractDungeon.relicRng.random(3);
+            NeowReward neowReward = new NeowReward(roll);
+            if (debug) logger.info("The roll is: " + roll);
+            if (debug) logger.info("The neowReward is: " + neowReward.optionLabel);
+            this.setDescriptionAfterLoading2(neowReward.optionLabel);
+            neowReward.activate();
+            */
+            
             triggered = true;
         }
     }
