@@ -16,7 +16,7 @@ public class DiabolicDiabolaPatch {
     
     private static float doubleDamage(AbstractCard card, float damage) {
         AbstractRelic nail = AbstractDungeon.player.getRelic(DiabolicDiabola.ID);
-        if (nail != null && nail.counter == -42 && card.damageTypeForTurn == DamageInfo.DamageType.NORMAL) {
+        if (nail != null && card.damageTypeForTurn == DamageInfo.DamageType.NORMAL) {
             damage *= 2;
             if (card.baseDamage != damage) {
                 card.isDamageModified = true;
@@ -28,7 +28,7 @@ public class DiabolicDiabolaPatch {
     private static float doubleDamage(DamageInfo info, float damage) {
         
         AbstractRelic nail = AbstractDungeon.player.getRelic(DiabolicDiabola.ID);
-        if (nail != null && nail.counter == -42 && info.type == DamageInfo.DamageType.NORMAL) {
+        if (nail != null && info.type == DamageInfo.DamageType.NORMAL) {
             damage *= 2;
             if (info.base != damage) {
                 info.isModified = true;

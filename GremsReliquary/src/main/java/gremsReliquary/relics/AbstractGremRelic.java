@@ -59,6 +59,7 @@ public class AbstractGremRelic extends CustomRelic {
         cursedDescription();
         tips.clear();
         tips.add(new PowerTip(name, description));
+        initializeTips();
         this.outline = outline;
     }
     

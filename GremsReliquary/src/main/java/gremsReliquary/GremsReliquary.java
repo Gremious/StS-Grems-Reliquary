@@ -1,6 +1,5 @@
 package gremsReliquary;
 
-import HalationCode.relics.steinsgate.Convergence;
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModLabeledToggleButton;
@@ -24,7 +23,6 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orichalcum;
-import gremsReliquary.effects.utility.NeowTentacleEffect;
 import gremsReliquary.effects.utility.PlaceholderRelicEffect;
 import gremsReliquary.relics.cursed.*;
 import gremsReliquary.relics.normal.*;
@@ -43,7 +41,7 @@ public class GremsReliquary implements
         EditKeywordsSubscriber,
         PostInitializeSubscriber
         , RelicGetSubscriber,
-        PostUpdateSubscriber{
+        PostUpdateSubscriber {
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
     public static boolean debug = true;
     
@@ -91,12 +89,12 @@ public class GremsReliquary implements
         return getModID() + "Resources/images/relics/outline/" + resourcePath;
     }
     
-    public static String makeOrbPath(String resourcePath) {
-        return getModID() + "Resources/orbs/" + resourcePath;
+    public static String makePowerPath32(String resourcePath) {
+        return getModID() + "Resources/images/powers/32/" + resourcePath;
     }
     
-    public static String makePowerPath(String resourcePath) {
-        return getModID() + "Resources/images/powers/" + resourcePath;
+    public static String makePowerPath84(String resourcePath) {
+        return getModID() + "Resources/images/powers/84/" + resourcePath;
     }
     
     public static String makeEventPath(String resourcePath) {
@@ -227,6 +225,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new CursedEgg(), RelicType.SHARED);
             BaseMod.addRelic(new BrokenRecord(), RelicType.SHARED);
             BaseMod.addRelic(new DiabolicDiabola(), RelicType.SHARED);
+            BaseMod.addRelic(new SternwardSword(), RelicType.SHARED);
             
             
             /*
@@ -330,7 +329,6 @@ public class GremsReliquary implements
                 AbstractDungeon.player.getRelic(Mithril.ID).onTrigger();
             }
         }
-        
     }
     
     // ====== NO EDIT AREA ======

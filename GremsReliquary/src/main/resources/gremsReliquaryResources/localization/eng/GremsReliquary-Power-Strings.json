@@ -1,10 +1,19 @@
 {
-"gremsReliquary:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied ", " keyword.", " keywords."]
-},
-"gremsReliquary:RarePower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH ", " enemy." , " enemies."]
-}
+  "gremsReliquary:CursedStrengthPower": {
+    "NAME": "Cursed Strength",
+    "DESCRIPTIONS": [
+      "Increases attack damage and block by #b",
+      "Decreases attack damage and block by #b",
+      ".",
+      " NL You cannot remove this."
+    ]
+  },
+  "gremsReliquary:RarePower": {
+    "NAME": "Placeholder Power",
+    "DESCRIPTIONS": [
+      "At the start of your turn, TOUCH ",
+      " enemy.",
+      " enemies."
+    ]
+  }
 }

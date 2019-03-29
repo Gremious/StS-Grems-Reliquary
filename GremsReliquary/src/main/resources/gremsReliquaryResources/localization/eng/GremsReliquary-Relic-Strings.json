@@ -71,7 +71,7 @@
   },
   "gremsReliquary:BrokenRecord": {
     "NAME": "Broken Record",
-    "FLAVOR": "Shattered by someone before you. One only wonders why.",
+    "FLAVOR": "Shattered by someone before you. You can only wonder why.",
     "DESCRIPTIONS": [
       "The first non-starter card you play each combat is played twice and Exhausts."
     ]
@@ -88,6 +88,13 @@
     "FLAVOR": "test",
     "DESCRIPTIONS": [
       "test"
+    ]
+  },
+  "gremsReliquary:SternwardSword": {
+    "NAME": "Sternward Sword",
+    "FLAVOR": "You can feel your strength draining with every swing, and yet, you have never felt stronger.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. NL At the start of each combat lose #b3 #yStrength and #b3 #yDexterity. NL This debuff cannot be removed."
     ]
   },
   "gremsReliquary:CursedBottle": {

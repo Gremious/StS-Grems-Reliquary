@@ -24,8 +24,6 @@ public class DiabolicDiabola extends AbstractGremRelic implements SuperRareRelic
     
     public DiabolicDiabola() {
         super(ID, IMG, OUTLINE, RelicTier.COMMON, RelicType.CURSED, LandingSound.MAGICAL);
-    
-        tips.add(new PowerTip(name, description));
     }
     
     // Description
