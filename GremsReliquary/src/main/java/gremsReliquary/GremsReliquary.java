@@ -1,5 +1,6 @@
 package gremsReliquary;
 
+import HalationCode.relics.steinsgate.Convergence;
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModLabeledToggleButton;
@@ -25,10 +26,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orichalcum;
 import gremsReliquary.effects.utility.NeowTentacleEffect;
 import gremsReliquary.effects.utility.PlaceholderRelicEffect;
-import gremsReliquary.relics.cursed.BrokenRecord;
-import gremsReliquary.relics.cursed.CursedBottle;
-import gremsReliquary.relics.cursed.CursedEgg;
-import gremsReliquary.relics.cursed.UnbalancedScales;
+import gremsReliquary.relics.cursed.*;
 import gremsReliquary.relics.normal.*;
 import gremsReliquary.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
@@ -44,7 +42,8 @@ public class GremsReliquary implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         PostInitializeSubscriber
-        , RelicGetSubscriber {
+        , RelicGetSubscriber,
+        PostUpdateSubscriber{
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
     public static boolean debug = true;
     
@@ -227,6 +226,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new CursedBottle(), RelicType.SHARED);
             BaseMod.addRelic(new CursedEgg(), RelicType.SHARED);
             BaseMod.addRelic(new BrokenRecord(), RelicType.SHARED);
+            BaseMod.addRelic(new DiabolicDiabola(), RelicType.SHARED);
             
             
             /*
@@ -234,6 +234,7 @@ public class GremsReliquary implements
             UnlockTracker.markRelicAsSeen(CursedBottle.ID);
             UnlockTracker.markRelicAsSeen(CursedEgg.ID);
             UnlockTracker.markRelicAsSeen(BrokenRecord.ID);
+            UnlockTracker.markRelicAsSeen(DiabolicDiabola.ID);
             */
         }
         
@@ -330,8 +331,6 @@ public class GremsReliquary implements
             }
         }
         
-        if (abstractRelic.relicId.equals(NeowsTentacle.ID)) {
-        }
     }
     
     // ====== NO EDIT AREA ======
@@ -368,5 +367,11 @@ public class GremsReliquary implements
     
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
+    }
+    
+    @Override
+    public void receivePostUpdate() {
+        if (AbstractDungeon.player == null) return;
+        if (AbstractDungeon.player.hasRelic(NeowsTentacle.ID)) NeowsTentacle.iLoveConcurrentModificationExceptions();
     }
 }

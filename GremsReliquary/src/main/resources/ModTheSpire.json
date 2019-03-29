@@ -2,7 +2,7 @@
   "modid": "gremsreliquary",
   "name": "Grem's Reliquary",
   "author_list": ["Gremious"],
-  "description": "A mod that adds any nice relic ideas I have. I have mod configs btw.",
+  "description": "A mod that adds any nice relic ideas I have. I have mod configs btw. \n \"Placholder\" relic works like, 50% of the time. If you want to disable it you can in the options.",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",

@@ -76,6 +76,13 @@
       "The first non-starter card you play each combat is played twice and Exhausts."
     ]
   },
+  "gremsReliquary:DiabolicDiabola": {
+    "NAME": "Diabolic Diabola",
+    "FLAVOR": "Embellish your true colors.",
+    "DESCRIPTIONS": [
+      "Deal double damage. Take double damage."
+    ]
+  },
   "gremsReliquary:test": {
     "NAME": "test",
     "FLAVOR": "test",

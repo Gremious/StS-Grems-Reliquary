@@ -40,7 +40,7 @@ public class NeowTentacleEffect extends AbstractGremEffect {
         NeowReward neowReward = new NeowReward(roll);
         if (debug) logger.info("The roll is: " + roll);
         if (debug) logger.info("The neowReward is: " + neowReward.optionLabel);
-        ((NeowsTentacle) relicInstance).setDescriptionAfterLoading2(neowReward.optionLabel);
+        //((NeowsTentacle) relicInstance).setDescriptionAfterLoading2(neowReward.optionLabel);
         neowReward.activate();
         
         isDone = true;
