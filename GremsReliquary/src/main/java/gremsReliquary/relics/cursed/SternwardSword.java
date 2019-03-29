@@ -12,8 +12,8 @@ import gremsReliquary.util.TextureLoader;
 
 public class SternwardSword extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(SternwardSword.class.getSimpleName());
-    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png");
-    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png");
+    public static final Texture IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/SternwardSword.png");
+    public static final Texture OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/SternwardSword.png");
     public static int amount = 2;
     
     AbstractCreature p = AbstractDungeon.player;

@@ -23,8 +23,8 @@ public class CursedStrengthPower extends AbstractPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath32("CursedStrengthDexPower.png"));
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath84("CursedStrengthDexPower.png"));
+    private static final Texture tex32 = TextureLoader.getTexture("gremsReliquaryResources/images/powers/32/CursedStrengthDexPower.png");
+    private static final Texture tex84 = TextureLoader.getTexture("gremsReliquaryResources/images/powers/84/CursedStrengthDexPower.png");
   
     public CursedStrengthPower(AbstractCreature owner, AbstractCreature source, final int amount) {
         name = NAME;
