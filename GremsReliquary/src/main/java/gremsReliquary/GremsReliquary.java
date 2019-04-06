@@ -39,8 +39,8 @@ public class GremsReliquary implements
         EditRelicsSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
-        PostInitializeSubscriber
-        , RelicGetSubscriber,
+        PostInitializeSubscriber,
+        RelicGetSubscriber,
         PostUpdateSubscriber {
     public static final Logger logger = LogManager.getLogger(GremsReliquary.class.getName());
     public static boolean debug = true;

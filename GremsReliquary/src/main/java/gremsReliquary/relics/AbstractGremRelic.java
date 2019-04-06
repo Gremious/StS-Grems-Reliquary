@@ -29,11 +29,11 @@ public class AbstractGremRelic extends CustomRelic {
     private static final Logger logger = LogManager.getLogger(AbstractGremRelic.class.getName());
     
     public static RelicType type;
-    private Texture outline;
     public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("gremsReliquary:RelicsUI");
     public static final String[] UI_STRINGS = uiStrings.TEXT;
     private ArrayList<CursedRelicBorderGlow> glowList = new ArrayList<>();
     private ArrayList<CursedRelicSparklies> sparkleList = new ArrayList<>();
+    private Texture outline;
     private float glowTimer = 0.0F;
     private float sparkleTimer = 0.0F;
     private int pulseCount = 0;
