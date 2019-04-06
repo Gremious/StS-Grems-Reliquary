@@ -1,7 +1,6 @@
 package gremsReliquary.relics.cursed;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -10,8 +9,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import gremsReliquary.GremsReliquary;
 import gremsReliquary.actions.BrokenRecordAction;
-import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
+import kotlinReliquary.relics.AbstractGremRelic;
 
 public class BrokenRecord extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(BrokenRecord.class.getSimpleName());

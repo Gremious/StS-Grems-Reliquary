@@ -82,11 +82,11 @@ public class GremsReliquary implements
     }
     
     public static String makeRelicPath(String resourcePath) {
-        return getModID() + "Resources/images/relics/" + resourcePath;
+        return getModID() + "Resources/images/kotlin.relics/" + resourcePath;
     }
     
     public static String makeRelicOutlinePath(String resourcePath) {
-        return getModID() + "Resources/images/relics/outline/" + resourcePath;
+        return getModID() + "Resources/images/kotlin.relics/outline/" + resourcePath;
     }
     
     public static String makePowerPath32(String resourcePath) {
@@ -149,7 +149,7 @@ public class GremsReliquary implements
         ModPanel settingsPanel = new ModPanel();
         
         
-        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Enable the normal relics.",
+        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Enable the normal kotlin.relics.",
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 enableNormals, settingsPanel, (label) -> {
         }, (button) -> {
@@ -163,7 +163,7 @@ public class GremsReliquary implements
             }
         });
         
-        ModLabeledToggleButton enableCursedButton = new ModLabeledToggleButton("Enable the cursed relics.",
+        ModLabeledToggleButton enableCursedButton = new ModLabeledToggleButton("Enable the cursed kotlin.relics.",
                 350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 enableCursed, settingsPanel, (label) -> {
         }, (button) -> {
@@ -213,7 +213,7 @@ public class GremsReliquary implements
     
     @Override
     public void receiveEditRelics() {
-        logger.info("Adding relics");
+        logger.info("Adding kotlin.relics");
         
         // This adds a relic to the Shared pool. Every character can find this relic.
         //   BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
@@ -254,7 +254,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new Placeholder(), RelicType.SHARED);
         }
         
-        logger.info("Done adding relics!");
+        logger.info("Done adding kotlin.relics!");
     }
     
     // ================ /ADD RELICS/ ===================

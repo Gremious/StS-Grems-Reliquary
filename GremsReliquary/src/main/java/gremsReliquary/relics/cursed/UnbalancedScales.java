@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import gremsReliquary.GremsReliquary;
-import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
+import kotlinReliquary.relics.AbstractGremRelic;
 
 public class UnbalancedScales extends AbstractGremRelic implements ClickableRelic {
     public static final String ID = GremsReliquary.makeID(UnbalancedScales.class.getSimpleName());

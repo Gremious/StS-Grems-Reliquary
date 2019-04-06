@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Deprecated
 public class AbstractGremRelic extends CustomRelic {
     private static final Logger logger = LogManager.getLogger(AbstractGremRelic.class.getName());
     

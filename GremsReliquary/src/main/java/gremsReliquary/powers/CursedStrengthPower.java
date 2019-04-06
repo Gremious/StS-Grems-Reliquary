@@ -9,11 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import gremsReliquary.GremsReliquary;
-import gremsReliquary.relics.cursed.SternwardSword;
 import gremsReliquary.util.TextureLoader;
-
-import static gremsReliquary.GremsReliquary.makePowerPath32;
-import static gremsReliquary.GremsReliquary.makePowerPath84;
 
 public class CursedStrengthPower extends AbstractPower {
     public AbstractCreature source;

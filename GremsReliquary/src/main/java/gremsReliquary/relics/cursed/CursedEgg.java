@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import gremsReliquary.GremsReliquary;
-import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
+import kotlinReliquary.relics.AbstractGremRelic;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.miscRng;
 

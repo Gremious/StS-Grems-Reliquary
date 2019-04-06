@@ -15,7 +15,7 @@ import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class CursedEggPatch {
+public class CursedEggPatch  {
     protected static final Logger logger = LogManager.getLogger(CursedEggPatch.class.getName());
     
     @SpirePatch(

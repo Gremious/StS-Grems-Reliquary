@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import gremsReliquary.relics.AbstractGremRelic;
 import javassist.CtBehavior;
+import kotlinReliquary.relics.AbstractGremRelic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,7 +29,7 @@ public class CursedRelicLinkRewardPatch {
             if (r.type == RewardItem.RewardType.RELIC) {
                 logger.info("We got a relic reward.");
                 logger.info("That relic is: " + r.relic.name + " ID: " + r.relic.relicId);
-                if (r.relic instanceof AbstractGremRelic) {
+                if (r.relic instanceof AbstractGremRelic ) {
                     relic = r.relic;
                 }
             }

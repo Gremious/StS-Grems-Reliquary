@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import gremsReliquary.GremsReliquary;
 import gremsReliquary.powers.CursedStrengthPower;
-import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
+import kotlinReliquary.relics.AbstractGremRelic;
 
 public class SternwardSword extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(SternwardSword.class.getSimpleName());

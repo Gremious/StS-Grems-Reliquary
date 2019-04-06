@@ -2,17 +2,11 @@ package gremsReliquary.relics.cursed;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.SuperRareRelic;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import gremsReliquary.GremsReliquary;
-import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
-
-import static com.megacrit.cardcrawl.core.CardCrawlGame.sound;
+import kotlinReliquary.relics.AbstractGremRelic;
 
 public class DiabolicDiabola extends AbstractGremRelic implements SuperRareRelic {
     public static final String ID = GremsReliquary.makeID(DiabolicDiabola.class.getSimpleName());

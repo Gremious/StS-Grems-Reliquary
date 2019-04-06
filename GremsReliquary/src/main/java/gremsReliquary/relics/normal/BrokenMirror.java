@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import gremsReliquary.GremsReliquary;
-import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
+import kotlinReliquary.relics.AbstractGremRelic;
 
 public class BrokenMirror extends AbstractGremRelic {
     public static final String ID = GremsReliquary.makeID(BrokenMirror.class.getSimpleName());

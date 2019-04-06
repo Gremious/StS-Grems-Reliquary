@@ -1,4 +1,4 @@
-package relics
+package kotlinReliquary.relics
 
 import basemod.abstracts.CustomRelic
 import com.badlogic.gdx.Gdx
@@ -19,19 +19,19 @@ import org.apache.logging.log4j.LogManager
 import java.lang.reflect.Field
 import java.util.*
 
-class AbstractGremRelic(id: String,
-                        texture: Texture,
-                        private val outline: Texture,
-                        tier: AbstractRelic.RelicTier,
-                        private val type: RelicType,
-                        sfx: AbstractRelic.LandingSound) : CustomRelic(id, texture, tier, sfx) {
+abstract class AbstractGremRelic(id: String,
+                                 texture: Texture,
+                                 private var outline: Texture,
+                                 tier: AbstractRelic.RelicTier,
+                                 private var type: RelicType,
+                                 sfx: AbstractRelic.LandingSound) : CustomRelic(id, texture, tier, sfx) {
 
-
-    private val glowList = ArrayList<CursedRelicBorderGlow>()
-    private val sparkleList = ArrayList<CursedRelicSparklies>()
+    // === Curse Glow Animation Vars ===
+    private var glowList = ArrayList<CursedRelicBorderGlow>()
+    private var sparkleList = ArrayList<CursedRelicSparklies>()
     private var glowTimer = 0.0f
     private var sparkleTimer = 0.0f
-    private val pulseCount = 0
+    private var pulseCount = 0
     private var offsetXField: Field? = null
     private var rotationField: Field? = null
 
@@ -45,66 +45,57 @@ class AbstractGremRelic(id: String,
         } catch (e: NoSuchFieldException) {
             e.printStackTrace()
         }
-        fun curseTrigger() {
-            if (type == RelicType.CURSED) {
-                val relicRewards = ArrayList<RewardItem>()
-                for (reward in AbstractDungeon.getCurrRoom().rewards) {
-                    if (reward.type == RewardItem.RewardType.RELIC && reward.relicLink == null) {
-                        relicRewards.add(reward)
-                    }
-                }
-
-                for (reward in relicRewards) {
-                    val tier = reward.relic.tier
-                    if (tier != AbstractRelic.RelicTier.SPECIAL && tier != AbstractRelic.RelicTier.DEPRECATED && tier != AbstractRelic.RelicTier.STARTER) {
-                        var newRelic: AbstractRelic? = AbstractDungeon.returnRandomRelic(tier)
-                        if (newRelic is AbstractGremRelic) {
-                            do {
-                                newRelic = AbstractDungeon.returnRandomRelic(tier)
-                            } while ((newRelic as AbstractGremRelic).type != RelicType.CURSED || newRelic.tier != tier)
-                        }
-
-                        if (newRelic != null) {
-                            val replaceReward = LinkedRewardItem(reward)
-                            val newReward = LinkedRewardItem(replaceReward, newRelic)
-                            val indexOf = AbstractDungeon.getCurrRoom().rewards.indexOf(reward)
-                            // Insert after existing reward
-                            AbstractDungeon.getCurrRoom().rewards.add(indexOf + 1, newReward)
-                            // Replace original
-                            AbstractDungeon.getCurrRoom().rewards[indexOf] = replaceReward
-                        }
-                    }
-                }
-            }
-        }
     }
+    // === Curse Glow Animation Vars ===
 
-
-    //==
     companion object {
-
-        private val logger = LogManager.getLogger(AbstractGremRelic::class.java.name)
-
-        val uiStrings = CardCrawlGame.languagePack.getUIString("gremsReliquary:RelicsUI")
-        val UI_STRINGS = uiStrings.TEXT
-
-        fun act(action: AbstractGameAction) {
-            AbstractDungeon.actionManager.addToBottom(action)
-        }
-    }
-
-    enum class RelicType private constructor() {
-        CURSED,
-        NORMAL
+        private val logger = LogManager.getLogger(this::class.java.name)
+        val uiStrings = CardCrawlGame.languagePack.getUIString("gremsReliquary:RelicsUI")!!
+        val UI_STRINGS = uiStrings.TEXT!!
     }
 
     init {
+        logger.info("abstract kotlin grem relic logger initialized")
         cursedDescription()
         tips.clear()
         tips.add(PowerTip(name, description))
         initializeTips()
     }
 
+    fun curseTrigger() {
+        if (type == RelicType.CURSED) {
+            val relicRewards = ArrayList<RewardItem>()
+            for (reward in AbstractDungeon.getCurrRoom().rewards) {
+                if (reward.type == RewardItem.RewardType.RELIC && reward.relicLink == null) {
+                    relicRewards.add(reward)
+                }
+            }
+
+            for (reward in relicRewards) {
+                val tier = reward.relic.tier
+                if (tier != AbstractRelic.RelicTier.SPECIAL && tier != AbstractRelic.RelicTier.DEPRECATED && tier != AbstractRelic.RelicTier.STARTER) {
+                    var newRelic: AbstractRelic? = AbstractDungeon.returnRandomRelic(tier)
+                    if (newRelic is AbstractGremRelic) {
+                        do {
+                            newRelic = AbstractDungeon.returnRandomRelic(tier)
+                        } while ((newRelic as AbstractGremRelic).type != RelicType.CURSED || newRelic.tier != tier)
+                    }
+
+                    if (newRelic != null) {
+                        val replaceReward = LinkedRewardItem(reward)
+                        val newReward = LinkedRewardItem(replaceReward, newRelic)
+                        val indexOf = AbstractDungeon.getCurrRoom().rewards.indexOf(reward)
+                        // Insert after existing reward
+                        AbstractDungeon.getCurrRoom().rewards.add(indexOf + 1, newReward)
+                        // Replace original
+                        AbstractDungeon.getCurrRoom().rewards[indexOf] = replaceReward
+                    }
+                }
+            }
+        }
+    }
+
+    // === Curse Glow Render Functions ===
     private fun renderGlow(sb: SpriteBatch) {
         if (type == RelicType.CURSED) {
             if (!Settings.hideRelics) {
@@ -238,8 +229,11 @@ class AbstractGremRelic(id: String,
         //        updateSparkle();
         super.renderWithoutAmount(sb, c)
     }
+    // === Curse Glow Render Functions ===
 
-    //==
+    fun act(action: AbstractGameAction) {
+        AbstractDungeon.actionManager.addToBottom(action)
+    }
 
     private fun cursedDescription() {
         if (type == RelicType.CURSED) {
@@ -247,6 +241,9 @@ class AbstractGremRelic(id: String,
         }
     }
 
-
+    enum class RelicType private constructor() {
+        CURSED,
+        NORMAL
+    }
 
 }

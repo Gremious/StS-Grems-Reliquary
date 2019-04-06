@@ -15,8 +15,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orichalcum;
 import gremsReliquary.GremsReliquary;
 import gremsReliquary.patches.OrichalcumMythrilSynergyPatch;
-import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
+import kotlinReliquary.relics.AbstractGremRelic;
 
 public class Mithril extends AbstractGremRelic implements OnLoseTempHpRelic, CustomSavable<Boolean> {
     public static final String ID = GremsReliquary.makeID(Mithril.class.getSimpleName());

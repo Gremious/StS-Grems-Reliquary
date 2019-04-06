@@ -17,8 +17,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import gremsReliquary.GremsReliquary;
 import gremsReliquary.patches.relics.BottledPlaceholderField;
-import gremsReliquary.relics.AbstractGremRelic;
 import gremsReliquary.util.TextureLoader;
+import kotlinReliquary.relics.AbstractGremRelic;
 
 import java.util.Iterator;
 import java.util.function.Predicate;
@@ -42,7 +42,7 @@ public class CursedBottle extends AbstractGremRelic implements CustomBottleRelic
     }
     
     // Now, for making Bottled cards we need a small patch - our own custom SpireField
-    // I've included that already in patches.relics.BottledPlaceholderField
+    // I've included that already in patches.kotlin.relics.BottledPlaceholderField
     // The basemod wiki I linked above has comments about onSave and onLoad
     
     @Override
