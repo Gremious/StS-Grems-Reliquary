@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.megacrit.cardcrawl.actions.AbstractGameAction
+import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -15,6 +16,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem
 import gremsReliquary.effects.visual.CursedRelicBorderGlow
 import gremsReliquary.effects.visual.CursedRelicSparklies
 import gremsReliquary.rewards.LinkedRewardItem
+import gremsReliquary.util.TextureLoader
 import org.apache.logging.log4j.LogManager
 import java.lang.reflect.Field
 import java.util.*
@@ -48,8 +50,10 @@ abstract class AbstractGremRelic(id: String,
     }
     // === Curse Glow Animation Vars ===
 
+    protected val p: AbstractCreature = AbstractDungeon.player
+
     companion object {
-        private val logger = LogManager.getLogger(this::class.java.name)
+        private val logger = LogManager.getLogger(this::class.java.simpleName)
         val uiStrings = CardCrawlGame.languagePack.getUIString("gremsReliquary:RelicsUI")!!
         val UI_STRINGS = uiStrings.TEXT!!
     }
@@ -59,7 +63,7 @@ abstract class AbstractGremRelic(id: String,
         cursedDescription()
         tips.clear()
         tips.add(PowerTip(name, description))
-        initializeTips()
+        this.initializeTips()
     }
 
     fun curseTrigger() {

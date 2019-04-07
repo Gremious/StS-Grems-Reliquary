@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.ThornsPower;
 import com.megacrit.cardcrawl.relics.Orichalcum;
-import gremsReliquary.relics.normal.Mithril;
+import kotlinReliquary.relics.normal.Mithril;
 import javassist.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,7 +25,7 @@ public class OrichalcumMythrilSynergyPatch {
         )
         public static SpireReturn Insert(Orichalcum __instance) {
             logger.info(onPlayerEndTurnPatch.class.getSimpleName() + " triggered");
-            if (AbstractDungeon.player.hasRelic(Mithril.ID) || OriBrokenField.broken.get(__instance)) {
+            if (AbstractDungeon.player.hasRelic(Mithril.Companion.getID()) || OriBrokenField.broken.get(__instance)) {
                 return SpireReturn.Return(null);
             }
             
@@ -48,7 +48,7 @@ public class OrichalcumMythrilSynergyPatch {
     )
     public static class atTurnStartPatch {
         public static void Postfix(Orichalcum __instance) {
-            if (AbstractDungeon.player.hasRelic(Mithril.ID)) {
+            if (AbstractDungeon.player.hasRelic(Mithril.Companion.getID())) {
                 AbstractDungeon.player.getRelic(Orichalcum.ID).stopPulse();
                 __instance.stopPulse();
             }

@@ -27,6 +27,7 @@ import gremsReliquary.effects.utility.PlaceholderRelicEffect;
 import gremsReliquary.relics.cursed.*;
 import gremsReliquary.relics.normal.*;
 import gremsReliquary.util.TextureLoader;
+import kotlinReliquary.relics.normal.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -242,7 +243,9 @@ public class GremsReliquary implements
             BaseMod.addRelic(new BrokenMirror(), RelicType.SHARED);
             BaseMod.addRelic(new Mithril(), RelicType.SHARED);
             BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
-            //==
+            BaseMod.addRelic(new MagicStrainer(), RelicType.SHARED);
+            
+            
             /*
             UnlockTracker.markRelicAsSeen(TimeIsMoney.ID);
             UnlockTracker.markRelicAsSeen(BrokenMirror.ID);
@@ -320,13 +323,13 @@ public class GremsReliquary implements
     @Override
     public void receiveRelicGet(AbstractRelic abstractRelic) {
         
-        if (AbstractDungeon.player.hasRelic(Placeholder.ID)) {
+        if (AbstractDungeon.player.hasRelic(Placeholder.Companion.getID())) {
             AbstractDungeon.effectsQueue.add(AbstractDungeon.effectsQueue.size() - 1, new PlaceholderRelicEffect(abstractRelic));
         }
         
-        if (AbstractDungeon.player.hasRelic(Mithril.ID)) {
+        if (AbstractDungeon.player.hasRelic(Mithril.Companion.getID())) {
             if (AbstractDungeon.player.hasRelic(Orichalcum.ID)) {
-                AbstractDungeon.player.getRelic(Mithril.ID).onTrigger();
+                AbstractDungeon.player.getRelic(Mithril.Companion.getID()).onTrigger();
             }
         }
     }
@@ -370,6 +373,6 @@ public class GremsReliquary implements
     @Override
     public void receivePostUpdate() {
         if (AbstractDungeon.player == null) return;
-        if (AbstractDungeon.player.hasRelic(NeowsTentacle.ID)) NeowsTentacle.iLoveConcurrentModificationExceptions();
+        if (AbstractDungeon.player.hasRelic(NeowsTentacle.Companion.getID())) NeowsTentacle.Companion.iLoveConcurrentModificationExceptions();
     }
 }

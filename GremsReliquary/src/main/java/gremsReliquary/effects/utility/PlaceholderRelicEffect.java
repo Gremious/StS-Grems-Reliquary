@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.relics.BottledLightning;
 import com.megacrit.cardcrawl.relics.BottledTornado;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import gremsReliquary.relics.normal.Placeholder;
+import kotlinReliquary.relics.normal.Placeholder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,16 +43,16 @@ public class PlaceholderRelicEffect extends AbstractGameEffect {
             } else {
                 if (duration == Settings.ACTION_DUR_FAST) {
                     if (debug) logger.info("Update start: " + l);
-                    if (AbstractDungeon.player.hasRelic(Placeholder.ID)
+                    if (AbstractDungeon.player.hasRelic(Placeholder.Companion.getID())
                             && !AbstractDungeon.isScreenUp
                             && AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()
                             && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.INCOMPLETE) {
                         if (debug) logger.info(l++);
-                        AbstractDungeon.player.getRelic(Placeholder.ID).flash();
+                        AbstractDungeon.player.getRelic(Placeholder.Companion.getID()).flash();
                         if (debug) logger.info(l++);
                         CardCrawlGame.sound.play("AUTOMATON_ORB_SPAWN");
                         if (debug) logger.info(l++);
-                        AbstractDungeon.player.loseRelic(Placeholder.ID);
+                        AbstractDungeon.player.loseRelic(Placeholder.Companion.getID());
                         if (debug) logger.info(l++);
                         AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relicInstance.makeCopy());
                         if (debug) logger.info(l++);

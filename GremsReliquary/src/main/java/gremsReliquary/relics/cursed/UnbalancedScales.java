@@ -24,7 +24,7 @@ public class UnbalancedScales extends AbstractGremRelic implements ClickableReli
     private static boolean usedThisCombat = false;
     
     public UnbalancedScales() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.CURSED, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.RARE, RelicType.CURSED, LandingSound.CLINK);
         tips.clear();
         tips.add(new PowerTip(name, description));
     }

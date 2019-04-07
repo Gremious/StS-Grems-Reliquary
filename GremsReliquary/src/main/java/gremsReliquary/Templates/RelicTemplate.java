@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.neow.NeowReward;
 import gremsReliquary.GremsReliquary;
-import gremsReliquary.relics.normal.NeowsTentacle;
+import kotlinReliquary.relics.normal.NeowsTentacle;
 import gremsReliquary.util.TextureLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
