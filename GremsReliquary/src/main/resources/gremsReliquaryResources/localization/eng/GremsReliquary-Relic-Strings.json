@@ -8,7 +8,7 @@
     ]
   },
   "gremsReliquary:TimeIsMoney": {
-    "NAME": "TimeIsMoney",
+    "NAME": "Time Is Money",
     "FLAVOR": "Ca-Ching!",
     "DESCRIPTIONS": [
       "At the start of each turn, gain #b",
@@ -27,7 +27,7 @@
     "NAME": "Unbalanced Scales",
     "FLAVOR": "No matter what or how you put things on this scale, one side will always tip.",
     "DESCRIPTIONS": [
-      "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Lose #r10 #yStrength and gain #g10 Dexterity."
+      "At the start of each combat, gain #g5 #yStrength and lose #r5 #yDexterity. NL [#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]combat:[] NL Lose #r10 #yStrength and gain #g10 #yDexterity."
     ]
   },
   "gremsReliquary:Placeholder": {
@@ -81,6 +81,14 @@
     "FLAVOR": "Embellish your true colors.",
     "DESCRIPTIONS": [
       "Deal double damage. Take double damage."
+    ]
+  },
+  "gremsReliquary:MagicStrainer": {
+    "NAME": "Magic Strainer",
+    "FLAVOR": "Filter all the little flecks out of those brews.",
+    "DESCRIPTIONS": [
+      "Whenever you use a potion, gain #b",
+      " #ygold."
     ]
   },
   "gremsReliquary:test": {
