@@ -1,4 +1,4 @@
-package gremsReliquary.Templates;
+package gremsReliquary.templates;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;

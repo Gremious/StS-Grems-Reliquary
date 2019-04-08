@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 import com.megacrit.cardcrawl.shop.StoreRelic;
-import gremsReliquary.relics.cursed.CursedEgg;
+import kotlinReliquary.relics.cursed.CursedEgg;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +29,7 @@ public class CursedEggPatch  {
         )
         public static void Insert(@ByRef AbstractCard[] c) {
             logger.info(getRewardCardsPatch.class.getSimpleName() + " triggered");
-            if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
+            if (AbstractDungeon.player.hasRelic(CursedEgg.Companion.getID())) {
                 c[0].upgrade();
             }
         }
@@ -55,7 +55,7 @@ public class CursedEggPatch  {
         )
         public static void Insert(TheLibrary __instance, int buttonPressed, @ByRef AbstractCard[] card) {
             logger.info(TheLibraryPatch.class.getSimpleName() + " triggered");
-            if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
+            if (AbstractDungeon.player.hasRelic(CursedEgg.Companion.getID())) {
                 card[0].upgrade();
             }
         }
@@ -81,7 +81,7 @@ public class CursedEggPatch  {
         )
         public static void Insert(GremlinMatchGame __instance, @ByRef AbstractCard[] c) {
             logger.info(GremlinMatchGamePatch.class.getSimpleName() + " triggered");
-            if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
+            if (AbstractDungeon.player.hasRelic(CursedEgg.Companion.getID())) {
                 c[0].upgrade();
             }
         }
@@ -110,7 +110,7 @@ public class CursedEggPatch  {
         )
         public static void Insert(RewardItem __instance, AbstractCard.CardColor colorType, @ByRef AbstractCard[] c) {
             logger.info(RewardItemPatch.class.getSimpleName() + " triggered");
-            if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
+            if (AbstractDungeon.player.hasRelic(CursedEgg.Companion.getID())) {
                 c[0].upgrade();
             }
         }
@@ -137,7 +137,7 @@ public class CursedEggPatch  {
         )
         public static void Insert1(ShopScreen __instance, @ByRef AbstractCard[] c) {
             logger.info(ShopScreenInitCardsPatch.class.getSimpleName() + " triggered");
-            if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
+            if (AbstractDungeon.player.hasRelic(CursedEgg.Companion.getID())) {
                 c[0].upgrade();
             }
         }
@@ -157,7 +157,7 @@ public class CursedEggPatch  {
         )
         public static void Insert2(ShopScreen __instance, @ByRef AbstractCard[] c) {
             logger.info(ShopScreenInitCardsPatch.class.getSimpleName() + " triggered");
-            if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
+            if (AbstractDungeon.player.hasRelic(CursedEgg.Companion.getID())) {
                 c[0].upgrade();
             }
         }
@@ -184,7 +184,7 @@ public class CursedEggPatch  {
         )
         public static void Insert1(ShopScreen __instance, @ByRef AbstractCard[] c) {
             logger.info(ShopScreenUpdatePatch.class.getSimpleName() + " triggered 1");
-            if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
+            if (AbstractDungeon.player.hasRelic(CursedEgg.Companion.getID())) {
                 c[0].upgrade();
             }
         }
@@ -204,7 +204,7 @@ public class CursedEggPatch  {
         )
         public static void Insert2(ShopScreen __instance, @ByRef AbstractCard[] c) {
             logger.info(ShopScreenUpdatePatch.class.getSimpleName() + " triggered 2");
-            if (AbstractDungeon.player.hasRelic(CursedEgg.ID)) {
+            if (AbstractDungeon.player.hasRelic(CursedEgg.Companion.getID())) {
                 c[0].upgrade();
             }
         }
@@ -231,7 +231,7 @@ public class CursedEggPatch  {
         public static void Insert(StoreRelic __instance, float rugY, AbstractRelic relic, ShopScreen shopScreen) {
             logger.info(RewardItemPatch.class.getSimpleName() + " triggered");
             
-            if (relic.relicId.equals(CursedEgg.ID)) {
+            if (relic.relicId.equals(CursedEgg.Companion.getID())) {
                 shopScreen.applyUpgrades(AbstractCard.CardType.SKILL);
                 shopScreen.applyUpgrades(AbstractCard.CardType.ATTACK);
                 shopScreen.applyUpgrades(AbstractCard.CardType.POWER);

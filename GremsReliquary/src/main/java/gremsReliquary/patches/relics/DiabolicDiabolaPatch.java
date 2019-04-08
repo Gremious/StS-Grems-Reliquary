@@ -8,14 +8,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import gremsReliquary.relics.cursed.DiabolicDiabola;
+import kotlinReliquary.relics.cursed.DiabolicDiabola;
 import javassist.CtBehavior;
 
 public class DiabolicDiabolaPatch {
     // Thank you SO much kio!
     
     private static float doubleDamage(AbstractCard card, float damage) {
-        AbstractRelic nail = AbstractDungeon.player.getRelic(DiabolicDiabola.ID);
+        AbstractRelic nail = AbstractDungeon.player.getRelic(DiabolicDiabola.Companion.getID());
         if (nail != null && card.damageTypeForTurn == DamageInfo.DamageType.NORMAL) {
             damage *= 2;
             if (card.baseDamage != damage) {
@@ -27,7 +27,7 @@ public class DiabolicDiabolaPatch {
     
     private static float doubleDamage(DamageInfo info, float damage) {
         
-        AbstractRelic nail = AbstractDungeon.player.getRelic(DiabolicDiabola.ID);
+        AbstractRelic nail = AbstractDungeon.player.getRelic(DiabolicDiabola.Companion.getID());
         if (nail != null && info.type == DamageInfo.DamageType.NORMAL) {
             damage *= 2;
             if (info.base != damage) {
