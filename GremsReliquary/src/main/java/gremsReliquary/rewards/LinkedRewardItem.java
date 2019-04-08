@@ -15,10 +15,10 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class LinkedRewardItem extends RewardItem
-{// Thank you kio!
-    public LinkedRewardItem(RewardItem original)
-    {
+public class LinkedRewardItem extends RewardItem {
+    // Thank you kio!
+    
+    public LinkedRewardItem(RewardItem original) {
         type = original.type;
         outlineImg = original.outlineImg;
         img = original.img;
@@ -38,20 +38,18 @@ public class LinkedRewardItem extends RewardItem
         ignoreReward = original.ignoreReward;
         redText = original.redText;
     }
-
-    public LinkedRewardItem(RewardItem setRelicLink, AbstractRelic relic)
-    {
+    
+    public LinkedRewardItem(RewardItem setRelicLink, AbstractRelic relic) {
         super(relic);
-
+        
         this.relicLink = setRelicLink;
         setRelicLink.relicLink = this;
     }
-
+    
     @Override
-    public void render(SpriteBatch sb)
-    {
+    public void render(SpriteBatch sb) {
         super.render(sb);
-
+        
         if (relicLink != null && type != RewardType.SAPPHIRE_KEY) {
             if (hb.hovered) {
                 // Make TipHelper think we haven't tried to render a tip this frame
@@ -62,24 +60,23 @@ public class LinkedRewardItem extends RewardItem
                 } catch (IllegalAccessException | NoSuchFieldException e) {
                     e.printStackTrace();
                 }
-
+                
                 ArrayList<PowerTip> tips = new ArrayList<>();
                 tips.add(new PowerTip(relic.name, relic.description));
                 tips.add(new PowerTip(TEXT[7], TEXT[8] + FontHelper.colorString(relicLink.relic.name, "y") + TEXT[9]));
                 TipHelper.queuePowerTips(360.0f * Settings.scale, InputHelper.mY + 50.0f * Settings.scale, tips);
             }
-
+            
             if (AbstractDungeon.getCurrRoom().rewards.indexOf(this) > AbstractDungeon.getCurrRoom().rewards.indexOf(relicLink)) {
                 renderRelicLink(sb);
             }
         }
-
+        
         hb.render(sb);
     }
-
+    
     @SpireOverride
-    protected void renderRelicLink(SpriteBatch sb)
-    {
+    protected void renderRelicLink(SpriteBatch sb) {
         SpireSuper.call(sb);
     }
 }

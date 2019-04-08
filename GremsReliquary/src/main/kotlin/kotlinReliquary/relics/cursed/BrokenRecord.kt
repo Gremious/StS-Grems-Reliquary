@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.CardLibrary
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import gremsReliquary.GremsReliquary
-import gremsReliquary.actions.BrokenRecordAction
+import kotlinReliquary.actions.BrokenRecordAction
 import gremsReliquary.util.TextureLoader
 import kotlinReliquary.relics.AbstractGremRelic
 

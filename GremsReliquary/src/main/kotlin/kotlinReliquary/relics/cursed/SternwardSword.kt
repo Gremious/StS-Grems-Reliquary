@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import gremsReliquary.GremsReliquary
-import gremsReliquary.powers.CursedStrengthPower
+import kotlinReliquary.powers.CursedStrengthPower
 import gremsReliquary.util.TextureLoader
 import kotlinReliquary.relics.AbstractGremRelic
 
