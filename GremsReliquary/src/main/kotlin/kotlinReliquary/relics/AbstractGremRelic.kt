@@ -25,9 +25,9 @@ import java.util.*
 abstract class AbstractGremRelic(id: String,
                                  texture: Texture,
                                  private var outline: Texture,
-                                 tier: AbstractRelic.RelicTier,
+                                 tier: RelicTier,
                                  private var type: RelicType,
-                                 sfx: AbstractRelic.LandingSound) : CustomRelic(id, texture, tier, sfx) {
+                                 sfx: LandingSound) : CustomRelic(id, texture, tier, sfx) {
 
     // === Curse Glow Animation Vars ===
     private var glowList = ArrayList<CursedRelicBorderGlow>()
@@ -58,7 +58,7 @@ abstract class AbstractGremRelic(id: String,
     }
 
     init {
-        logger.info("abstract kotlin grem relic logger initialized")
+        logger.info("abstract kotlin grem relic initialized")
         cursedDescription()
         tips.clear()
         tips.add(PowerTip(name, description))
@@ -76,7 +76,7 @@ abstract class AbstractGremRelic(id: String,
 
             for (reward in relicRewards) {
                 val tier = reward.relic.tier
-                if (tier != AbstractRelic.RelicTier.SPECIAL && tier != AbstractRelic.RelicTier.DEPRECATED && tier != AbstractRelic.RelicTier.STARTER) {
+                if (tier != RelicTier.SPECIAL && tier != RelicTier.DEPRECATED && tier != RelicTier.STARTER) {
                     var newRelic: AbstractRelic? = AbstractDungeon.returnRandomRelic(tier)
                     if (newRelic is AbstractGremRelic) {
                         do {
@@ -244,7 +244,7 @@ abstract class AbstractGremRelic(id: String,
         }
     }
 
-    enum class RelicType private constructor() {
+    enum class RelicType {
         CURSED,
         NORMAL
     }

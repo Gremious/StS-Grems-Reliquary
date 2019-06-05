@@ -116,6 +116,23 @@
       "Select a card to bottle for "
     ]
   },
+  "gremsReliquary:voidAnchor": {
+    "NAME": "Void Anchor",
+    "FLAVOR": "It's weight is displaced onto some other dimension, and from it's appearance, you question if it's finite.",
+    "DESCRIPTIONS": [
+      "Start each turn with #b",
+      " Block. At the start of each combat, ALL of your Skills gain #yExhaust and #yEthereal.",
+      "NL Exhaust.",
+      "NL Ethereal."
+    ]
+  },
+  "gremsReliquary:bottomlessGreed": {
+    "NAME": "Bottomless Greed",
+    "FLAVOR": "\"I WANT THEM ALL.\"",
+    "DESCRIPTIONS": [
+      "Lose [E] at the start of each turn. At the next boss reward, obtain ALL of the relics. You cannot skip boss relics."
+    ]
+  },
   "gremsReliquary:DefaultClickableRelic": {
     "NAME": "Right-Clicky Relic",
     "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",

@@ -127,7 +127,7 @@ public class GremsReliquary implements
     @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Grem's Reliquary =========================");
-        GremsReliquary defaultmod = new GremsReliquary();
+        GremsReliquary gremsReliquaryInit = new GremsReliquary();
         logger.info("========================= /Grem's Reliquary Initialized! Have fun!/ =========================");
     }
     
@@ -178,6 +178,7 @@ public class GremsReliquary implements
                 "You must restart the game for changes to take effect.",
                 400.0f, 300.0f, Settings.CREAM_COLOR, settingsPanel, label -> {
         });
+        
         settingsPanel.addUIElement(enableNormalsButton);
         settingsPanel.addUIElement(enableCursedButton);
         settingsPanel.addUIElement(justSomeText);
@@ -208,6 +209,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new DiabolicDiabola(), RelicType.SHARED);
             BaseMod.addRelic(new SternwardSword(), RelicType.SHARED);
             BaseMod.addRelic(new SinisterStrainer(), RelicType.SHARED);
+            BaseMod.addRelic(new VoidAnchor(), RelicType.SHARED);
             
             
             /*
@@ -216,6 +218,7 @@ public class GremsReliquary implements
             UnlockTracker.markRelicAsSeen(CursedEgg.ID);
             UnlockTracker.markRelicAsSeen(BrokenRecord.ID);
             UnlockTracker.markRelicAsSeen(DiabolicDiabola.ID);
+            UnlockTracker.markRelicAsSeen(VoidAnchor.ID);
             */
         }
         
