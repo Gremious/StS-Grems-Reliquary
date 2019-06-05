@@ -2,6 +2,7 @@ package kotlinReliquary.powers
 
 import basemod.interfaces.CloneablePowerInterface
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
@@ -37,6 +38,7 @@ class LoseEnergyNextTurnPower(owner: AbstractCreature, var source: AbstractCreat
 
     override fun atStartOfTurn() {
         AbstractDungeon.actionManager.addToBottom(LoseEnergyAction(amount))
+        AbstractDungeon.actionManager.addToBottom(RemoveSpecificPowerAction(owner, source, this))
     }
 
     override fun makeCopy(): AbstractPower {
