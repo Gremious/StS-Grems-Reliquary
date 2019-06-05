@@ -69,11 +69,6 @@ public class GremsReliquary implements
     public static final String PROP_ENABLE_CURSED = "enableCursed";
     public static boolean enableCursed = true;
     
-    /*
-   public static final String PROP_ENABLE_PLACEHOLDER = "enablePlaceholder";
-   public static boolean enablePlaceholder = true;
-   */
-    
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "gremsReliquaryResources/images/Badge.png";
     
@@ -178,28 +173,13 @@ public class GremsReliquary implements
                 e.printStackTrace();
             }
         });
-        /*
-        ModLabeledToggleButton enablePlaceholderButton = new ModLabeledToggleButton("Enable the \"Placeholder\" relic. \n It's effect won't always trigger correctly so you might not want to play with it \n (for example 2 lizard tails won't work) though it is fun when it works, I think.",
-                350.0f, 500.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
-                enablePlaceholder, settingsPanel, (label) -> {
-        }, (button) -> {
-            enablePlaceholder = button.enabled;
-            try {
-                SpireConfig config = new SpireConfig("gremsReliquary", "gremsReliquaryConfig", gremsReliquaryDefaultSettings);
-                config.setBool(PROP_ENABLE_PLACEHOLDER, enablePlaceholder);
-                config.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        */
+        
         ModLabel justSomeText = new ModLabel(
                 "You must restart the game for changes to take effect.",
                 400.0f, 300.0f, Settings.CREAM_COLOR, settingsPanel, label -> {
         });
         settingsPanel.addUIElement(enableNormalsButton);
         settingsPanel.addUIElement(enableCursedButton);
-        //settingsPanel.addUIElement(enablePlaceholderButton);
         settingsPanel.addUIElement(justSomeText);
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
