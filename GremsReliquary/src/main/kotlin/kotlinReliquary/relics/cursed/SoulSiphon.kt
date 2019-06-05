@@ -11,13 +11,13 @@ import gremsReliquary.util.TextureLoader
 import kotlinReliquary.powers.LoseEnergyNextTurnPower
 import kotlinReliquary.relics.AbstractGremRelic
 
-class SoulSiphon : AbstractGremRelic(ID, IMG, OUTLINE, RelicTier.UNCOMMON, RelicType.NORMAL, LandingSound.CLINK), ClickableRelic {
+class SoulSiphon : AbstractGremRelic(ID, IMG, OUTLINE, RelicTier.COMMON, RelicType.CURSED, LandingSound.CLINK), ClickableRelic {
 
 
     companion object {
         val ID = GremsReliquary.makeID(SoulSiphon::class.java.simpleName)
-        val IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/placeholder_relic.png")
-        val OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/placeholder_relic.png")
+        val IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/SoulSiphon.png")
+        val OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/SoulSiphon.png")
         var amount = 1
         var usedThisTurn = false
     }

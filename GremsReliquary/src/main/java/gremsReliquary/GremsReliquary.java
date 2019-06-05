@@ -210,7 +210,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new SternwardSword(), RelicType.SHARED);
             BaseMod.addRelic(new SinisterStrainer(), RelicType.SHARED);
             BaseMod.addRelic(new VoidAnchor(), RelicType.SHARED);
-            
+            BaseMod.addRelic(new SoulSiphon(), RelicType.SHARED);
             
             /*
             UnlockTracker.markRelicAsSeen(UnbalancedScales.ID);
@@ -219,6 +219,7 @@ public class GremsReliquary implements
             UnlockTracker.markRelicAsSeen(BrokenRecord.ID);
             UnlockTracker.markRelicAsSeen(DiabolicDiabola.ID);
             UnlockTracker.markRelicAsSeen(VoidAnchor.ID);
+            UnlockTracker.markRelicAsSeen(SoulSiphon.ID);
             */
         }
         
