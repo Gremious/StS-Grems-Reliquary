@@ -2,6 +2,7 @@ package kotlinReliquary.relics.cursed
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction
+import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import gremsReliquary.GremsReliquary
@@ -15,6 +16,7 @@ class SternwardSword : AbstractGremRelic(ID, IMG, OUTLINE, AbstractRelic.RelicTi
         val IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/SternwardSword.png")
         val OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/SternwardSword.png")
         var amount = 2
+        val p: AbstractCreature = AbstractDungeon.player
     }
 
     override fun onEquip() {

@@ -24,7 +24,6 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orichalcum;
 import gremsReliquary.effects.utility.PlaceholderRelicEffect;
-import gremsReliquary.relics.normal.*;
 import gremsReliquary.util.TextureLoader;
 import kotlinReliquary.relics.cursed.*;
 import kotlinReliquary.relics.normal.*;
@@ -83,11 +82,11 @@ public class GremsReliquary implements
     }
     
     public static String makeRelicPath(String resourcePath) {
-        return getModID() + "Resources/images/kotlin.relics/" + resourcePath;
+        return getModID() + "Resources/images/kotlin.gremsReliquary.relics/" + resourcePath;
     }
     
     public static String makeRelicOutlinePath(String resourcePath) {
-        return getModID() + "Resources/images/kotlin.relics/outline/" + resourcePath;
+        return getModID() + "Resources/images/kotlin.gremsReliquary.relics/outline/" + resourcePath;
     }
     
     public static String makePowerPath32(String resourcePath) {
@@ -150,7 +149,7 @@ public class GremsReliquary implements
         ModPanel settingsPanel = new ModPanel();
         
         
-        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Enable the normal kotlin.relics.",
+        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Enable the normal kotlin.gremsReliquary.relics.",
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 enableNormals, settingsPanel, (label) -> {
         }, (button) -> {
@@ -164,7 +163,7 @@ public class GremsReliquary implements
             }
         });
         
-        ModLabeledToggleButton enableCursedButton = new ModLabeledToggleButton("Enable the cursed kotlin.relics.",
+        ModLabeledToggleButton enableCursedButton = new ModLabeledToggleButton("Enable the cursed kotlin.gremsReliquary.relics.",
                 350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 enableCursed, settingsPanel, (label) -> {
         }, (button) -> {
@@ -214,7 +213,7 @@ public class GremsReliquary implements
     
     @Override
     public void receiveEditRelics() {
-        logger.info("Adding kotlin.relics");
+        logger.info("Adding kotlin.gremsReliquary.relics");
         
         // This adds a relic to the Shared pool. Every character can find this relic.
         //   BaseMod.addRelic(new NeowsTentacle(), RelicType.SHARED);
@@ -227,6 +226,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new BrokenRecord(), RelicType.SHARED);
             BaseMod.addRelic(new DiabolicDiabola(), RelicType.SHARED);
             BaseMod.addRelic(new SternwardSword(), RelicType.SHARED);
+            BaseMod.addRelic(new SinisterStrainer(), RelicType.SHARED);
             
             
             /*
@@ -257,7 +257,7 @@ public class GremsReliquary implements
             BaseMod.addRelic(new Placeholder(), RelicType.SHARED);
         }
         
-        logger.info("Done adding kotlin.relics!");
+        logger.info("Done adding kotlin.gremsReliquary.relics!");
     }
     
     // ================ /ADD RELICS/ ===================
@@ -373,6 +373,7 @@ public class GremsReliquary implements
     @Override
     public void receivePostUpdate() {
         if (AbstractDungeon.player == null) return;
-        if (AbstractDungeon.player.hasRelic(NeowsTentacle.Companion.getID())) NeowsTentacle.Companion.iLoveConcurrentModificationExceptions();
+        if (AbstractDungeon.player.hasRelic(NeowsTentacle.Companion.getID()))
+            NeowsTentacle.Companion.iLoveConcurrentModificationExceptions();
     }
 }

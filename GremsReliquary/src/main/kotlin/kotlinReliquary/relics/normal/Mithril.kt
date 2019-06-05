@@ -6,6 +6,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPF
 import com.evacipated.cardcrawl.mod.stslib.relics.OnLoseTempHpRelic
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction
 import com.megacrit.cardcrawl.cards.DamageInfo
+import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.PowerTip
@@ -29,6 +30,7 @@ class Mithril : AbstractGremRelic(ID, IMG, OUTLINE, AbstractRelic.RelicTier.UNCO
         private val TEMP_HP = 4
         private val ORI_THORNS = 3
         var spireFieldSave: Boolean = false
+        val p: AbstractCreature = AbstractDungeon.player
     }
 
     init {

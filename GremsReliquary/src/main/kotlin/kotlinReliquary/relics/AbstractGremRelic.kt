@@ -51,8 +51,6 @@ abstract class AbstractGremRelic(id: String,
     }
     // === Curse Glow Animation Vars ===
 
-    protected val p: AbstractCreature = AbstractDungeon.player
-
     companion object {
         private val logger = LogManager.getLogger(this::class.java.simpleName)
         val uiStrings = CardCrawlGame.languagePack.getUIString("gremsReliquary:RelicsUI")!!

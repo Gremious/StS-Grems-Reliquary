@@ -98,6 +98,14 @@
       "test"
     ]
   },
+  "gremsReliquary:SinisterStrainer": {
+    "NAME": "Sinister Strainer",
+    "FLAVOR": "A thick darkness envelopes any liquid passing through it.",
+    "DESCRIPTIONS": [
+      "Whenever you use a potion, #rlose #b",
+      " HP and use it again."
+    ]
+  },
   "gremsReliquary:SternwardSword": {
     "NAME": "Sternward Sword",
     "FLAVOR": "You can feel your strength draining with every swing, and yet, you have never felt stronger.",

@@ -96,7 +96,7 @@ public class OrichalcumMythrilSynergyPatch {
                             + AbstractDungeon.class.getName() + ".actionManager.addToBottom(new " + ApplyPowerAction.class.getName() + "(p, p, new " + ThornsPower.class.getName() + "(p, 3), 3)); "
                             + AbstractDungeon.class.getName() + ".actionManager.addToTop(new " + RelicAboveCreatureAction.class.getName() + "(p, this)); "
                             + " this.stopPulse(); "
-                            + " if (p.hasRelic(" + Mithril.class.getName() + ".ID)) {((" + Mithril.class.getName() + ") p.getRelic(" + Mithril.class.getName() + ".ID)).changeOri(); }}",
+                            + " if (p.hasRelic(" + Mithril.class.getName() + ".Companion.getID())) {((" + Mithril.class.getName() + ") p.getRelic(" + Mithril.class.getName() + ".Companion.getID())).changeOri(); }}",
                     ctClass
             );
             logger.info("I'm curious. Simple: " + AbstractPlayer.class.getSimpleName());

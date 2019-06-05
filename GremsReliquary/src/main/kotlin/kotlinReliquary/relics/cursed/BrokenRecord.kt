@@ -21,13 +21,14 @@ class BrokenRecord : AbstractGremRelic(ID, IMG, OUTLINE, AbstractRelic.RelicTier
         val OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/BrokenRecord.png")
         var amount = 2
         private var usedThisCombat = false
+
     }
 
     override fun atBattleStart() {
         usedThisCombat = false
     }
 
-    override fun onUseCard(card: AbstractCard?, useCardAction: UseCardAction?) {
+    override fun onUseCard(card: AbstractCard, useCardAction: UseCardAction?) {
         if (!usedThisCombat) {
             flash()
             var isStarterCard = false

@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction
 import com.megacrit.cardcrawl.actions.utility.UseCardAction
 import com.megacrit.cardcrawl.cards.AbstractCard
 import com.megacrit.cardcrawl.cards.DamageInfo
+import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import com.megacrit.cardcrawl.rooms.AbstractRoom
@@ -18,6 +19,7 @@ class BrokenMirror : AbstractGremRelic(ID, IMG, OUTLINE, AbstractRelic.RelicTier
         val IMG = TextureLoader.getTexture("gremsReliquaryResources/images/relics/BrokenMirror.png")
         val OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/BrokenMirror.png")
         var damageAmount = 2
+        val p: AbstractCreature = AbstractDungeon.player
     }
 
     override fun onUseCard(card: AbstractCard, useCardAction: UseCardAction?) {
