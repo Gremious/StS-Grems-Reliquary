@@ -1,5 +1,6 @@
 package kotlinReliquary.powers
 
+import basemod.interfaces.CloneablePowerInterface
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.core.AbstractCreature
@@ -9,7 +10,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower
 import gremsReliquary.GremsReliquary
 import gremsReliquary.util.TextureLoader
 
-class CursedStrengthPower(owner: AbstractCreature, var source: AbstractCreature, amount: Int) : AbstractPower() {
+class CursedStrengthPower(owner: AbstractCreature, var source: AbstractCreature, amount: Int) : AbstractPower(), CloneablePowerInterface {
+
+
     companion object {
         val POWER_ID = GremsReliquary.makeID(CursedStrengthPower::class.java.simpleName)
         private val powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID)
@@ -71,5 +74,9 @@ class CursedStrengthPower(owner: AbstractCreature, var source: AbstractCreature,
         }
 
         description += DESCRIPTIONS[3]
+    }
+
+    override fun makeCopy(): AbstractPower {
+        return CursedStrengthPower(owner, source, amount)
     }
 }

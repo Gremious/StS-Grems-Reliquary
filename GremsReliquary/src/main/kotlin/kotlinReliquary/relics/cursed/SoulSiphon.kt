@@ -36,7 +36,7 @@ class SoulSiphon : AbstractGremRelic(ID, IMG, OUTLINE, RelicTier.UNCOMMON, Relic
             stopPulse()
             act(RelicAboveCreatureAction(AbstractDungeon.player, this))
             act(GainEnergyAction(amount))
-            act(ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, LoseEnergyNextTurnPower(amount), amount))
+            act(ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, LoseEnergyNextTurnPower(AbstractDungeon.player, AbstractDungeon.player, amount), amount))
         }
     }
 
