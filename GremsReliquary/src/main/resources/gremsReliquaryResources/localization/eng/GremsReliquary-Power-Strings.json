@@ -8,6 +8,13 @@
       " NL You cannot remove this."
     ]
   },
+  "gremsReliquary:LoseEnergyNextTurnPower": {
+    "NAME": "De-energized",
+    "DESCRIPTIONS": [
+      "At the start of your turn, lose #b",
+      " [E] ."
+    ]
+  },
   "gremsReliquary:RarePower": {
     "NAME": "Placeholder Power",
     "DESCRIPTIONS": [

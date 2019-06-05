@@ -133,6 +133,13 @@
       "Lose [E] at the start of each turn. At the next boss reward, obtain ALL of the relics. You cannot skip boss relics."
     ]
   },
+  "gremsReliquary:soulSiphon": {
+    "NAME": "Soul Siphon",
+    "FLAVOR": "The little label on it states \"For-self use only.\".",
+    "DESCRIPTIONS": [
+      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL Gain #b1 [E] . Next turn, lose #b1 [E] ."
+    ]
+  },
   "gremsReliquary:DefaultClickableRelic": {
     "NAME": "Right-Clicky Relic",
     "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
