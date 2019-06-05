@@ -135,7 +135,7 @@
   },
   "gremsReliquary:soulSiphon": {
     "NAME": "Soul Siphon",
-    "FLAVOR": "The little label on it states \"For-self use only.\".",
+    "FLAVOR": "The little label on the back states \"For-self use only.\".",
     "DESCRIPTIONS": [
       "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL Gain #b1 [E] . Next turn, lose #b1 [E] ."
     ]
