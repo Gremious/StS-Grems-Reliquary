@@ -79,11 +79,11 @@ public class GremsReliquary implements
     }
     
     public static String makeRelicPath(String resourcePath) {
-        return getModID() + "Resources/images/kotlin.gremsReliquary.relics/" + resourcePath;
+        return getModID() + "Resources/images/relics/" + resourcePath;
     }
     
     public static String makeRelicOutlinePath(String resourcePath) {
-        return getModID() + "Resources/images/kotlin.gremsReliquary.relics/outline/" + resourcePath;
+        return getModID() + "Resources/images/relics/outline/" + resourcePath;
     }
     
     public static String makePowerPath32(String resourcePath) {
@@ -146,7 +146,7 @@ public class GremsReliquary implements
         ModPanel settingsPanel = new ModPanel();
         
         
-        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Enable the normal kotlin.gremsReliquary.relics.",
+        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("Enable the normal relics.",
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 enableNormals, settingsPanel, (label) -> {
         }, (button) -> {
@@ -160,7 +160,7 @@ public class GremsReliquary implements
             }
         });
         
-        ModLabeledToggleButton enableCursedButton = new ModLabeledToggleButton("Enable the cursed kotlin.gremsReliquary.relics.",
+        ModLabeledToggleButton enableCursedButton = new ModLabeledToggleButton("Enable the cursed relics.",
                 350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 enableCursed, settingsPanel, (label) -> {
         }, (button) -> {
@@ -195,7 +195,7 @@ public class GremsReliquary implements
     
     @Override
     public void receiveEditRelics() {
-        logger.info("Adding kotlin.gremsReliquary.relics");
+        logger.info("Adding relics");
         
         // This adds a relic to the Shared pool. Every character can find this relic.
         
@@ -241,7 +241,7 @@ public class GremsReliquary implements
         // BaseMod.addRelic(new Placeholder(), RelicType.SHARED);
         // UnlockTracker.markRelicAsSeen(Placeholder.ID);
         
-        logger.info("Done adding kotlin.gremsReliquary.relics!");
+        logger.info("Done adding relics!");
     }
     
     // ================ /ADD RELICS/ ===================
