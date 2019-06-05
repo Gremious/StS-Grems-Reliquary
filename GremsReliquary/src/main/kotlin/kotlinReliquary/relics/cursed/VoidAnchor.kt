@@ -41,6 +41,7 @@ class VoidAnchor : AbstractGremRelic(ID, IMG, OUTLINE, RelicTier.UNCOMMON, Relic
             c.rawDescription += this.DESCRIPTIONS[3]
         }
 
+        c.initializeDescription()
     }
 
     override fun atTurnStart() {
