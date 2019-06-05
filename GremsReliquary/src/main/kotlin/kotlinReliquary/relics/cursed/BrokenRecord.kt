@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.CardLibrary
 import com.megacrit.cardcrawl.relics.AbstractRelic
 import gremsReliquary.GremsReliquary
-import kotlinReliquary.actions.BrokenRecordAction
 import gremsReliquary.util.TextureLoader
+import kotlinReliquary.actions.BrokenRecordAction
 import kotlinReliquary.relics.AbstractGremRelic
 
 class BrokenRecord : AbstractGremRelic(ID, IMG, OUTLINE, AbstractRelic.RelicTier.UNCOMMON, AbstractGremRelic.RelicType.CURSED, AbstractRelic.LandingSound.FLAT) {
@@ -21,7 +21,6 @@ class BrokenRecord : AbstractGremRelic(ID, IMG, OUTLINE, AbstractRelic.RelicTier
         val OUTLINE = TextureLoader.getTexture("gremsReliquaryResources/images/relics/outline/BrokenRecord.png")
         var amount = 2
         private var usedThisCombat = false
-
     }
 
     override fun atBattleStart() {

@@ -41,7 +41,7 @@
     "NAME": "Cursed Egg",
     "FLAVOR": "You feel a constant sense of unease, carrying this around.",
     "DESCRIPTIONS": [
-      "Whenever you add any card into your deck, Upgrade it. NL Whenever you enter a Rest Site, replace a random Upgraded card in your deck with a Strike or Defend, at random."
+      "Whenever you add any card into your deck, #yUpgrade it. NL Whenever you enter a Rest Site, replace a random Upgraded card in your deck with a Strike or Defend, at random."
     ]
   },
   "gremsReliquary:Curseberry": {
@@ -91,13 +91,6 @@
       " #ygold."
     ]
   },
-  "gremsReliquary:test": {
-    "NAME": "test",
-    "FLAVOR": "test",
-    "DESCRIPTIONS": [
-      "test"
-    ]
-  },
   "gremsReliquary:SinisterStrainer": {
     "NAME": "Sinister Strainer",
     "FLAVOR": "A thick darkness envelopes any liquid passing through it.",
@@ -139,6 +132,13 @@
       "Whenever you play a card, draw ",
       ".",
       "Select a card to bottle for "
+    ]
+  },
+  "gremsReliquary:test": {
+    "NAME": "test",
+    "FLAVOR": "test",
+    "DESCRIPTIONS": [
+      "test"
     ]
   }
 }
